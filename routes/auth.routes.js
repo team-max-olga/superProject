@@ -54,9 +54,9 @@ router.post("/signup", (req, res, next) => {
       //   console.log("New created user is: ", newUserCreatedInDB);
       res.redirect("/login");
     })
-    .catch((error) => {
-      console.log(error);
-      next(error);
+    .catch((err) => {
+      console.log(err);
+      next(err);
     });
 });
 

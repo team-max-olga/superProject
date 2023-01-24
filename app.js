@@ -28,13 +28,9 @@ app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 app.use("/", require("./routes/auth.routes"));
-// GIVES AN ERROR
-// throw new TypeError('Router.use() requires a middleware function but got a ' + gettype(fn))
-// app.use("/profile", require("./routes/habitboard.routes"));
+app.use("/profile", require("./routes/habitboard.routes"));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-// GIVES AN ERROR
-// Error: Cannot find module './error-handling'
-// require("./error-handling")(app);
+require("./error-handling")(app);
 
 module.exports = app;
