@@ -1,0 +1,25 @@
+<div>
+    <h2>Sign up</h2>
+    <p>and start using Track It</p>
+    <form action="/signup" method="POST">
+        <label for="">
+            Username (3 to 16 characters. It may include '_')
+            <input type="text" name="username" placeholder="Vasya_pupkin">
+        </label>
+        <label for="">Email
+            <input type="email" name="email" placeholder="Email">
+        </label>
+        <label for="">
+            Choose Password
+            <input type="password" name="password" placeholder="Minimum 8 characters">
+        </label>
+        <button type="submit">Create Account</button>
+
+
+        {{!-- error message --}}
+
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+    </form>
+</div>
