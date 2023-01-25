@@ -13,8 +13,9 @@ router.get("/profile", (req,res) => {
 })
 
 //route GET for create a new habit page (2)
-router.get("/profile/create-habit", (res,req) => {
-    res.render("profile/create-new-habit")
+router.get("/profile/create-habit", (req,res) => {
+/*         res.send("Create a New Habit")
+ */        res.render("profile/create-habit")
 })
 
 //route POST for "create a new HABIT" (3)
