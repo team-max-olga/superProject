@@ -8,7 +8,7 @@ router.get("/profile", (req,res) => {
     Habit.find()
         .then((habit) => {
             console.log("Welcome! This is your Habit Board.")
-            res.render("profile/habitboard")
+            res.render("profile/habitboard", {habit})
         })
 })
 
