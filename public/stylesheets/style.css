@@ -138,3 +138,8 @@ form button:hover {
   gap: 0.5em ;
   flex-wrap: wrap;
 }
+
+.radio-button {
+  display: flex;
+  
+}

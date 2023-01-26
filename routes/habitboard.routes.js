@@ -14,16 +14,16 @@ router.get("/profile", (req,res) => {
 
 //route GET for create a new habit page (2)
 router.get("/profile/create-habit", (req,res) => {
-/*         res.send("Create a New Habit")
- */        res.render("profile/create-habit")
+        res.render("profile/create-habit")
+        console.log("Create a new habit here")
 })
 
 //route POST for "create a new HABIT" (3)
 router.post("/profile/create-habit", (req,res) => {
-
+    const {title, category, duration, description} = req.body
     // const {keys from the model file for the habit} = req.body     !!!!!!!!!!!!!!!
 
-    Habit.create(/* {keys from the model file for the habit } */)
+    Habit.create({title, category, duration, description})
         .then((habit) => {
             console.log("new habit was created: " + habit)
             res.redirect("/profile")
