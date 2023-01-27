@@ -89,6 +89,7 @@ cursor: pointer;
   padding: 0 15px;
 }
 
+/* TODO change styles */
 .error {
   background: #f02b63;
   box-sizing: border-box;

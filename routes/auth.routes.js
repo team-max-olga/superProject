@@ -93,6 +93,10 @@ router.post("/signup", (req, res, next) => {
 
 router.get("/login", (req, res, next) => res.render("auth/login"));
 
+router.get("/profile", (req, res, next) => {
+  res.render("profile/habitboard");
+});
+
 router.post("/login", (req, res, next) => {
   const { username, email, password } = req.body;
 
@@ -104,12 +108,13 @@ router.post("/login", (req, res, next) => {
     });
   }
   // Checking if the user is already registered with our website
+
   User.findOne({ username })
     .then((user) => {
-      console.log("LOGED USER: ", user);
+      console.log(user);
       if (!user) {
         res.render("auth/signup", {
-          errorMessage: "Username not found please sign up.",
+          errorMessage: "User not found please sign up.",
         });
       }
       //compareSync() is used to compare the user inputted password with the hashed password in the database
@@ -120,30 +125,9 @@ router.post("/login", (req, res, next) => {
       }
     })
 
-    //   // Checking if the email is already registered with our website
-    //   User.findOne({ email })
-    //     .then((userEmail) => {
-    //       console.log(userEmail);
-    //       if (!userEmail) {
-    //         res.render("auth/login", {
-    //           errorMessage:
-    //             "Email not found please sign up.",
-    //         });
-    //       }
-    //       else if (bcrypt.compareSync(password, user.passwordHash)) {
-    //         res.render("profile/habitboard", userEmail);
-    //       } else {
-    //         res.render("auth/login", { errorMessage: "Incorrect Password" });
-    //       }
-    //     })
-
     .catch((error) => {
       console.log(error);
     });
-});
-
-router.get("/profile", (req, res, next) => {
-  res.render("profile/habitboard");
 });
 
 module.exports = router;
