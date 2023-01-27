@@ -179,6 +179,7 @@ span {
   border-radius: 10px;
   font-weight: 600;
   text-transform: uppercase;
+  text-decoration: none;
 }
 
 .create-button {
@@ -196,9 +197,35 @@ span {
   cursor: pointer;
 }
 
+.details-button {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: darkblue;
+  border: 2px solid darkblue;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-button:hover {
+  transition: 0.2s ease-in-out;
+  background-color: blue;
+  border: 1px solid #333;
+  color: white;
+  box-shadow: 0 0 10px #333;
+  cursor: pointer;
+}
+
 /* Index Page */
 .buttons-group-index {
   display: flex;
   justify-content: space-evenly;
 
+}
+
+#alert {
+  background-color: darkred;
+  color: wheat;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2.5px;
+  padding: 10px 25px;
 }

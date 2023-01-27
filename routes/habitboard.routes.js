@@ -36,7 +36,7 @@ router.post("/profile/create-habit", (req,res) => {
 
 //POST with ID goes up
 //route GET for habit details page (4)
-router.get("/profile/habit-details/:habitId", (req,res) => {
+router.get("/profile/habit/:habitId", (req,res) => {
     const { habitId } = req.params
 
     Habit.findById(habitId)
