@@ -89,6 +89,130 @@ cursor: pointer;
   padding: 0 15px;
 }
 
+.habit-item {
+  border: 5px black solid;
+  background-color: rgba(168, 168, 168, 0.4);
+
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+  flex-wrap: wrap;
+}
+
+
+
+hr {
+  border: 5px solid black;
+}
+
+.right-side {
+  border: 2px solid green;
+  
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 1em;
+}
+
+.tracking {
+  display: flex;
+  align-items: center;
+  gap: 0.5em ;
+  flex-wrap: wrap;
+}
+
+.radio-button {
+  display: flex;
+}
+
+.habit-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em ;
+  margin: 50px;
+}
+
+.habit-card {
+  margin: 0 10px;
+  padding: 10px;
+  width: 200px;
+
+  background-color:  rgba(154, 149, 149, 0.6);
+
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+.habit-card:hover {
+transform: scale(1.10);
+
+box-shadow: 0 0 40px -10px rgba(0,0,0, 0.25);
+transition: 0.3s;
+}
+
+span {
+  font-style: italic;
+}
+
+.button {
+  letter-spacing: 1px;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.create-button {
+  background-color: transparent;
+  color: darkgreen;
+  border: 2px solid darkgreen;
+}
+
+.create-button:hover {
+  transition: 0.2s ease-in-out;
+  background-color: green;
+  border: 1px solid #333;
+  color: white;
+  box-shadow: 0 0 10px #333;
+  cursor: pointer;
+}
+
+.details-button {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: darkblue;
+  border: 2px solid darkblue;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-button:hover {
+  transition: 0.2s ease-in-out;
+  background-color: blue;
+  border: 1px solid #333;
+  color: white;
+  box-shadow: 0 0 10px #333;
+  cursor: pointer;
+}
+
+/* Index Page */
+.buttons-group-index {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+#alert {
+  background-color: darkred;
+  color: wheat;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2.5px;
+  padding: 10px 25px;
+=======
 /* TODO change styles */
 .error {
   background: #f02b63;
@@ -97,4 +221,3 @@ cursor: pointer;
   margin: 20px auto;
   padding: 20px;
   width: 100%;
-}

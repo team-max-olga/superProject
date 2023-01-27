@@ -1,15 +1,76 @@
 <h1>this is our Habitboard ♟</h1>
+<h1 id="alert">Добавить кнопку в каждую карточку привычки и кнопку назад!!!</h1>
 <br>
-<h2>Here goes an image carousel</h2>
-<p>images from carousel must have motivational phrases</p>
+<a class="create-button button" href="/profile/create-habit" id="cr-btn">create a new habbit</a>
 <br>
-<h2>Here goes a button to <a href="#">create a new habbit</a></h2>
-<br>
-<h2>Down here goes the habits</h2>
-<br>
-<h4>habit</h4>
-<h4>habit</h4>
-<h4>habit</h4>
-<h4>habit</h4>
-<h4>habit</h4>
-<h4>habit</h4>
+
+
+<div class="habit-card-list">
+    {{#each habit}}
+    <div class="habit-card">
+        <div class="habit-card-info">
+            <h6 class="habit-category">{{category}} icon</h6> {{!-- to be replaced by the icons --}}
+            <h3 class="habit-title">{{title}}</h3>
+        </div>
+        <hr>
+        <div class="habit-card-progress">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+        <hr>
+        <div>
+            <h6 class="habit-description">Description:
+                <p><span>{{description}}</span></p>
+            </h6>
+        </div>
+        <a class="" href="/profile/habit/{{_id}}">About</a>
+
+    </div>
+    {{/each}}
+</div>
+
+
+
+
+{{!-- <div class="habit-list">
+    <div class="habit-item">
+        <div class="left-side">
+            <h3>Habit Name</h3>
+            <h6>Category icon</h6>
+            <h6>Description</h6>
+        </div>
+        <div class="right-side">
+            <div class="tracking">
+                <div class="week">
+                    <p>Week 1</p>
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                </div>
+                <div class="week">
+                    <p>Week 2</p>
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                </div>
+                <div class="week">
+                    <p>Week 3</p>
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}

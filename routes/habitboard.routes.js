@@ -8,22 +8,22 @@ router.get("/profile", (req,res) => {
     Habit.find()
         .then((habit) => {
             console.log("Welcome! This is your Habit Board.")
-            res.render("profile/habitboard")
+            res.render("profile/habitboard", {habit})
         })
 })
 
 //route GET for create a new habit page (2)
 router.get("/profile/create-habit", (req,res) => {
-/*         res.send("Create a New Habit")
- */        res.render("profile/create-habit")
+        res.render("profile/create-habit")
+        console.log("Create a new habit here")
 })
 
 //route POST for "create a new HABIT" (3)
 router.post("/profile/create-habit", (req,res) => {
-
+    const {title, category, duration, description} = req.body
     // const {keys from the model file for the habit} = req.body     !!!!!!!!!!!!!!!
 
-    Habit.create(/* {keys from the model file for the habit } */)
+    Habit.create({title, category, duration, description})
         .then((habit) => {
             console.log("new habit was created: " + habit)
             res.redirect("/profile")
@@ -36,7 +36,7 @@ router.post("/profile/create-habit", (req,res) => {
 
 //POST with ID goes up
 //route GET for habit details page (4)
-router.get("/profile/habit-details/:habitId", (req,res) => {
+router.get("/profile/habit/:habitId", (req,res) => {
     const { habitId } = req.params
 
     Habit.findById(habitId)
