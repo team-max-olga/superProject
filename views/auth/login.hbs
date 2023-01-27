@@ -1,0 +1,25 @@
+<div class="auth-container">
+    <h2>Log in</h2>
+    <p>Welcome back!</p>
+    <form class="auth-form" action="/login" method="POST">
+        <label for="">
+            Username
+            <input type="text" name="username" placeholder="Your username">
+        </label>
+        <label for="">Email
+            <input type="email" name="email" placeholder="Your email">
+        </label>
+        <label for="">
+            Password
+            <input type="password" name="password" placeholder="Password">
+        </label>
+        <button type="submit">Log In</button>
+
+
+        {{!-- error message --}}
+
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+    </form>
+</div>
