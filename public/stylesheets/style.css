@@ -2,9 +2,9 @@ body {
   background-image: url(../images/background-image.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-
-  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100vh;
+  width: 100vw;
 }
 
 .anchor {
@@ -14,9 +14,7 @@ body {
     border: 1px black solid;
     border-radius: 10px;
     padding: 8px 18px;
-    /* margin: 0 15px; */ 
     font-weight: 600;
-
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -30,53 +28,41 @@ box-shadow: 0 0 10px #333;
 cursor: pointer;
 }
 
-/* a {
-  color: #00b7ff;
-} */
-
-/* h1 {
-  color: 15px;
-} */
-
-.container {
+.auth-container {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
   width: 400px;
-  height: 420px;
   position: relative;
   border: solid 1px black;
   border-radius: 10px;
+  margin: 0 auto;
+  margin-block: 20vh;
+  padding: 32px;
 }
 
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  height: 80%;
 }
- 
-form label {
+
+.auth-form label {
   width: 100%;
   font-size: 1rem;
 }
  
-form input {
-  margin-top: 10px;
-}
-
-form input,
-form button {
-  font-size: 1rem;
-  padding: 4px;
+.auth-form input {
+  margin-top: 8px;
   width: 100%;
-  margin-bottom: 25px;
+  padding: 8px;
+  font-size: 14px;
 }
 
-form button {
+.auth-form button {
   background: #00d3f3;
   border: 1px solid #2745de;
   border-radius: 10px;
@@ -85,10 +71,9 @@ form button {
   font-size: 16px;
   padding: 7px;
   width: 50%;
-  margin-left: 200px;
 }
  
-form button:hover {
+.auth-form button:hover {
   background: #fff;
   color: #43a3e6;
   transition: 0.3s ease background;
@@ -97,10 +82,18 @@ form button:hover {
 .navbar-container {
   background: linear-gradient(to right, rgb(183,68,30),rgb(206,93,38));
   border-bottom: 1px black solid;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
+}
+
+.error {
+  background: #f02b63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
 }

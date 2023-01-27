@@ -1,0 +1,29 @@
+<div class="auth-container">
+    {{!-- <div class="signup-form vertical-center"> --}}
+        <h2>Log in</h2>
+        {{!-- TASK add the dynamic username --}}
+        <p>Welcome back to Track It!</p>
+        <form class="auth-form" action="/profile" method="POST">
+            <label for="">
+                Username
+                <input type="text" name="username" placeholder="Your username">
+            </label>
+            <label for="">Email
+                <input type="email" name="email" placeholder="Your email">
+            </label>
+            <label for="">
+                Password
+                <input type="password" name="password" placeholder="Password">
+            </label>
+            <button type="submit">Log In</button>
+
+
+            {{!-- error message --}}
+
+            {{#if errorMessage}}
+            <p class="error">{{errorMessage}}</p>
+            {{/if}}
+        </form>
+
+    {{!-- </div> --}}
+</div>
