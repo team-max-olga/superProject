@@ -1,6 +1,6 @@
-<h1>this is our Habitboard ♟</h1>
-<h1 id="alert">Добавить кнопку в каждую карточку привычки и кнопку назад!!!</h1>
-<br>
+<h1>Welcome to your HabitBoard, {{user.username}}</h1>
+
+ <br>
 <a class="create-button button" href="/profile/create-habit" id="cr-btn">create a new habbit</a>
 <br>
 
@@ -11,6 +11,7 @@
         <div class="habit-card-info">
             <h6 class="habit-category">{{category}} icon</h6> {{!-- to be replaced by the icons --}}
             <h3 class="habit-title">{{title}}</h3>
+            <h4>{{author}}</h4>
         </div>
         <hr>
         <div class="habit-card-progress">

@@ -21,11 +21,21 @@ const habitSchema = new Schema(
     description: {
       type: String,
     },
+    author: {
+      type: Schema.Types.ObjectId, ref: "User"
+    },
+
+    /* 
+    author: {
+      objectId
+    }
+    */
     // creator: String,
     // created: {
     //   type: Date,
     //   default: Date.now,
     // },
+    
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

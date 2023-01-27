@@ -1,20 +1,24 @@
 <div class="auth-container">
     <h2>Sign up</h2>
-    <p>and start using Track It</p>
+    <p>and start using HabitHub</p>
     <form class="auth-form" action="/signup" method="POST">
-        <label for="">
-            Username (3 to 16 characters. It may include '_')
+        <label for="">Username:
             <input type="text" name="username" placeholder="Vasya_pupkin">
+            (3 to 16 characters. It may include '_')
         </label>
-        <label for="">Email
+
+        <label for="">Email:
             <input type="email" name="email" placeholder="name@example.com">
         </label>
-        <label for="">
-            Choose Password
-            <input type="password" name="password" placeholder="Minimum 8 characters">
-        </label>
-        <button type="submit">Create Account</button>
 
+        <label for="">Password:
+            <input type="password" name="password" placeholder="Minimum 8 characters">
+            Must include Uppercase Letter, Lowercase Letter and Numbers.
+        </label>
+
+        <button class="create-button button" type="submit">Create Account</button>
+
+        <p>Already have an account? <a href="/login">Login</a></p>
 
         {{!-- error message --}}
 

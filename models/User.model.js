@@ -10,6 +10,9 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
     },
+    habit: [{
+      type: Schema.Types.ObjectId, ref: "Habit"
+    }],
     email: {
       type: String,
       unique: true,
@@ -22,6 +25,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
+    
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

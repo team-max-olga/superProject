@@ -6,9 +6,9 @@ const mongoose = require('mongoose')
 //route GET for the HabitBoard page (1)
 router.get("/profile", (req,res) => {
     Habit.find()
-        .then((habit) => {
+        .then((habit, user) => {
             console.log("Welcome! This is your Habit Board.")
-            res.render("profile/habitboard", {habit})
+            res.render("profile/habitboard", {habit, user})
         })
 })
 
@@ -20,14 +20,14 @@ router.get("/profile/create-habit", (req,res) => {
 
 //route POST for "create a new HABIT" (3)
 router.post("/profile/create-habit", (req,res) => {
-    const {title, category, duration, description} = req.body
-    // const {keys from the model file for the habit} = req.body     !!!!!!!!!!!!!!!
+    const {title, category, duration, description, author} = req.body
 
-    Habit.create({title, category, duration, description})
+    Habit.create({title, category, duration, description, author})
         .then((habit) => {
             console.log("new habit was created: " + habit)
-            res.redirect("/profile")
+            return User.findByIdAndUpdate(author, {$push: {habit: habit._id}})
         })
+        .then(() => res.redirect("/profile"))
         .catch((error) => {
             console.log("It seems there is an error during creating a new habit: " + error)
             res.render
@@ -50,7 +50,7 @@ router.get("/profile/habit/:habitId", (req,res) => {
 })
 
 //route GET for edit habit page (5)
-router.get("/profile/:habitId/edit-habit", (req,res) => {
+router.get("/profile/:habitId/edit", (req,res) => {
     const { habitId } = req.params
 
     Habit.findById(habitId)

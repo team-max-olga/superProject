@@ -93,9 +93,9 @@ router.post("/signup", (req, res, next) => {
 
 router.get("/login", (req, res, next) => res.render("auth/login"));
 
-router.get("/profile", (req, res, next) => {
+/* router.get("/profile", (req, res, next) => {
   res.render("profile/habitboard");
-});
+}); */
 
 router.post("/login", (req, res, next) => {
   const { username, email, password } = req.body;
@@ -119,7 +119,7 @@ router.post("/login", (req, res, next) => {
       }
       //compareSync() is used to compare the user inputted password with the hashed password in the database
       else if (bcrypt.compareSync(password, user.passwordHash)) {
-        res.render("profile/habitboard", user);
+        res.redirect("/profile");
       } else {
         res.render("auth/login", { errorMessage: "Incorrect Password" });
       }

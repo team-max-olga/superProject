@@ -7,39 +7,66 @@ body {
   width: 100vw;
 }
 
+/* ==================================================================================== */
+/* Layout */
+
 .anchor {
   letter-spacing: 1px;
-    background-color: rgb(41,58,115);
-    color: white;
-    border: 1px black solid;
-    border-radius: 10px;
-    padding: 8px 18px;
-    font-weight: 600;
-    text-decoration: none;
-    text-transform: uppercase;
+  background-color: rgb(41, 58, 115);
+  color: white;
+  border: 1px black solid;
+  border-radius: 10px;
+  padding: 8px 18px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .anchor:hover {
   transition: 0.2s ease-in-out;
-background-color: green;
-border: 1px solid #333;
-color: white;
-box-shadow: 0 0 10px #333;
-cursor: pointer;
+  background-color: green;
+  border: 1px solid #333;
+  color: white;
+  box-shadow: 0 0 10px #333;
+  cursor: pointer;
 }
+
+.navbar-container {
+  background: linear-gradient(to right, rgb(183, 68, 30), rgb(206, 93, 38));
+  border-bottom: 1px black solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+}
+
+/* ==================================================================================== */
+/* Index Page */
+.buttons-group-index {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* ==================================================================================== */
+/* Auth Forms  */
 
 .auth-container {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+
   width: 400px;
   position: relative;
   border: solid 1px black;
   border-radius: 10px;
+
   margin: 0 auto;
-  margin-block: 20vh;
+  margin-block: 10vh;
   padding: 32px;
+
+  background: rgba(245, 245, 245, .4);
 }
 
 .auth-form {
@@ -54,82 +81,46 @@ cursor: pointer;
   width: 100%;
   font-size: 1rem;
 }
- 
-.auth-form input {
+
+.auth-form input, .create-form label {
   margin-top: 8px;
   width: 100%;
   padding: 8px;
   font-size: 14px;
 }
 
-.auth-form button {
-  background: #00d3f3;
-  border: 1px solid #2745de;
-  border-radius: 10px;
+#alert {
+  background-color: darkred;
+  color: wheat;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2.5px;
+  padding: 10px 25px;
+}
+
+/* ======= */
+/* TODO change styles */
+.error {
+  background: #f02b63;
+  box-sizing: border-box;
   color: #fff;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 7px;
-  width: 50%;
-}
- 
-.auth-form button:hover {
-  background: #fff;
-  color: #43a3e6;
-  transition: 0.3s ease background;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
 }
 
-.navbar-container {
-  background: linear-gradient(to right, rgb(183,68,30),rgb(206,93,38));
-  border-bottom: 1px black solid;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
-}
-
-.habit-item {
-  border: 5px black solid;
-  background-color: rgba(168, 168, 168, 0.4);
-
-  display: flex;
-  align-items: center;
-  margin: 0 15px;
-  flex-wrap: wrap;
-}
-
-
+/* ==================================================================================== */
+/* HabitBoard */
 
 hr {
   border: 5px solid black;
 }
 
-.right-side {
-  border: 2px solid green;
-  
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  gap: 1em;
-}
-
-.tracking {
-  display: flex;
-  align-items: center;
-  gap: 0.5em ;
-  flex-wrap: wrap;
-}
-
-.radio-button {
-  display: flex;
-}
-
 .habit-card-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5em ;
-  margin: 50px;
+  gap: .75em;
+  margin: 50px 50px;
 }
 
 .habit-card {
@@ -137,25 +128,72 @@ hr {
   padding: 10px;
   width: 200px;
 
-  background-color:  rgba(154, 149, 149, 0.6);
+  background-color: rgba(154, 149, 149, 0.6);
 
   border-right: 2px solid black;
   border-bottom: 2px solid black;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 
   text-align: center;
 }
 
 .habit-card:hover {
-transform: scale(1.10);
+  transform: scale(1.10);
 
-box-shadow: 0 0 40px -10px rgba(0,0,0, 0.25);
-transition: 0.3s;
+  box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
 }
 
 span {
   font-style: italic;
 }
+
+/* ==================================================================================== */
+/* New-Habit */
+
+.habit-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 400px;
+  max-width: 30%;
+
+  background: rgba(245, 245, 245, .4);
+  border: 2px black solid;
+  border-radius: 10px;
+
+  padding: 10px;
+  margin: 1.5rem;
+}
+
+.input-options {
+  display: flex;
+  
+}
+
+.create-form input {
+  height: 2rem;
+  font-size: 1.05rem;
+}
+
+.radio-button {
+  display: flex;
+}
+
+
+
+/* 
+.auth-form, .create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  height: 80%;
+} */
+
+/* ==================================================================================== */
+/* General */
 
 .button {
   letter-spacing: 1px;
@@ -167,7 +205,7 @@ span {
 }
 
 .create-button {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, .05);
   color: darkgreen;
   border: 2px solid darkgreen;
 }
@@ -198,26 +236,6 @@ span {
   cursor: pointer;
 }
 
-/* Index Page */
-.buttons-group-index {
-  display: flex;
-  justify-content: space-evenly;
+/* ======================= */
+/* switch buttons for Create-Habit */
 
-}
-
-#alert {
-  background-color: darkred;
-  color: wheat;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 2.5px;
-  padding: 10px 25px;
-=======
-/* TODO change styles */
-.error {
-  background: #f02b63;
-  box-sizing: border-box;
-  color: #fff;
-  margin: 20px auto;
-  padding: 20px;
-  width: 100%;
