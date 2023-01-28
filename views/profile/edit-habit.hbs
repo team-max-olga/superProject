@@ -1,14 +1,14 @@
 <h1>This is an edit a habit page</h1>
 <hr>
-<a class="button" href="/profile/habit/{{thisHabit._id}}">go back</a>
+<a class="button" href="/profile/habit/{{_id}}">go back</a>
 <hr>
-<h3>{{thisHabit.title}}</h3>
+<h3>{{title}} this </h3>
 
 
 <form action="/profile/{{_id}}/edit" method="POST">
     <label for="">
         <h4>Title:</h4>
-            <input type="text" name="title" value="{{thisHabit.title}}">
+            <input type="text" name="title" value="{{title}}">
     </label>
 
     <label for="">
@@ -44,10 +44,10 @@
 
     <label for="">
         <h4>Description</h4>
-        <input type="text" value="{{thisHabit.description}}">
+        <input type="text" name="description" value="{{description}}">
     </label>
 
-    <form action="/profile/{{updatedHabit._id}}/edit" method="POST">
+    <form action="/profile/{{_id}}/edit" method="POST">
         <button class="button ">Edit Habit</button>
     </form>
 

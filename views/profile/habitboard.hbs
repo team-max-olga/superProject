@@ -1,5 +1,5 @@
-{{#if userInSession}}
-<h2>Welcome, to your HabitBoard, {{ userInSession.username }}!</h2>
+{{#if _id}}
+<h2>Welcome, to your HabitBoard, {{ username }}!</h2>
 
 {{else}}
 <br>
@@ -42,7 +42,6 @@
 
 
 
-
 {{!-- <div class="habit-list">
     <div class="habit-item">
         <div class="left-side">
@@ -52,7 +51,7 @@
         </div>
         <div class="right-side">
             <div class="tracking">
-                <div class="week">
+                <div class="week1 week">
                     <p>Week 1</p>
                     <input type="checkbox">
                     <input type="checkbox">
@@ -62,7 +61,7 @@
                     <input type="checkbox">
                     <input type="checkbox">
                 </div>
-                <div class="week">
+                <div class="week2 week">
                     <p>Week 2</p>
                     <input type="checkbox">
                     <input type="checkbox">
@@ -72,7 +71,7 @@
                     <input type="checkbox">
                     <input type="checkbox">
                 </div>
-                <div class="week">
+                <div class="week3 week">
                     <p>Week 3</p>
                     <input type="checkbox">
                     <input type="checkbox">

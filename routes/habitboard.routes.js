@@ -5,13 +5,19 @@ const mongoose = require("mongoose");
 
 //route GET for the HabitBoard page (1)
 router.get("/profile", (req, res) => {
-  Habit.find().then((habit) => {
+  User.findById(req.session.currentUser._id)
+    .populate("habit")
+    .then((info) => {
+      console.log(info)
+      res.render("profile/habitboard", info)
+    })
+  /* Habit.find().then((habit) => {
     console.log("Welcome! This is your Habit Board.");
     res.render("profile/habitboard", {
       habit,
       userInSession: req.session.currentUser,
     });
-  });
+  }); */
 });
 
 //route GET for create a new habit page (2)
@@ -27,7 +33,7 @@ router.post("/profile/create-habit", (req, res) => {
     Habit.create({title, category, duration, description, author: req.session.currentUser._id})
         .then((habit) => {
             console.log("new habit was created: " + habit)
-            return User.findByIdAndUpdate(author, {$push: {habit: habit._id}})
+            return User.findByIdAndUpdate(req.session.currentUser._id, {$push: {habit: habit._id}})
         })
         .then(() => res.redirect("/profile"))
         .catch((error) => {
@@ -64,7 +70,7 @@ router.get("/profile/:habitId/edit", (req, res) => {
     Habit.findById(habitId)
     .then((habitToEdit) => {
         console.log("The habit you want to edit is this one: " + habitToEdit)
-        res.render("profile/edit-habit", {thisHabit: habitToEdit})
+        res.render("profile/edit-habit", habitToEdit)
     })
     .catch((error) => {
       console.log("there was an error trying to edit your habit: " + error);
@@ -78,8 +84,8 @@ router.post("/profile/:habitId/edit", (req,res) => {
 
     Habit.findByIdAndUpdate(habitId, {title, category, duration, description}, {new: true})
         .then((updatedHabit) => {
-            res.redirect(`/profile/${updatedHabit.id}`)
-            console.log("Habit updated: " + updatedHabit)
+          console.log("Habit updated: " + updatedHabit)
+          res.redirect(`/profile/habit/${updatedHabit.id}`)
         })
         .catch((error) => {
             console.log("Error occured while editing your habit: " + error)
