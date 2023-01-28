@@ -8,7 +8,6 @@ const userSchema = new Schema(
       unique: true,
       required: [true, "Username is required"],
       trim: true,
-      lowercase: true,
     },
     habit: [{
       type: Schema.Types.ObjectId, ref: "Habit"
