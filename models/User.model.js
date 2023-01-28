@@ -10,8 +10,8 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
     },
-    habit: [{
-      type: Schema.Types.ObjectId, ref: "Habit"
+    habit: [{ 
+      type: Schema.Types.ObjectId, ref: 'Habit' 
     }],
     email: {
       type: String,

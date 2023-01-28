@@ -7,22 +7,28 @@
 
 <div class="habit-card-list">
     {{#each habit}}
+    
     <div class="habit-card">
         <div class="habit-card-info">
             <h6 class="habit-category">{{category}} icon</h6> {{!-- to be replaced by the icons --}}
             <h3 class="habit-title">{{title}}</h3>
             <h4>{{author}}</h4>
         </div>
+
         <hr>
+
         <div class="habit-card-progress">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
+
         <hr>
+
         <div>
             <h6 class="habit-description">Description:
                 <p><span>{{description}}</span></p>
             </h6>
         </div>
+
         <a class="" href="/profile/habit/{{_id}}">About</a>
 
     </div>

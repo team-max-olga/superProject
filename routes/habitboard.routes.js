@@ -22,7 +22,7 @@ router.get("/profile/create-habit", (req,res) => {
 router.post("/profile/create-habit", (req,res) => {
     const {title, category, duration, description, author} = req.body
 
-    Habit.create({title, category, duration, description, author})
+    Habit.create({title, category, duration, description, /* author: req.session.currentUser._id */})
         .then((habit) => {
             console.log("new habit was created: " + habit)
             return User.findByIdAndUpdate(author, {$push: {habit: habit._id}})
@@ -33,8 +33,14 @@ router.post("/profile/create-habit", (req,res) => {
             res.render
         })
 })
+/* 
+    .js
+find user
+access user
+access to the array
+author.habit.push(habit._id)
+ */
 
-//POST with ID goes up
 //route GET for habit details page (4)
 router.get("/profile/habit/:habitId", (req,res) => {
     const { habitId } = req.params
@@ -54,9 +60,9 @@ router.get("/profile/:habitId/edit", (req,res) => {
     const { habitId } = req.params
 
     Habit.findById(habitId)
-    .then((habit) => {
-        console.log("The habit you want to edit is this one: " + habit)
-        res.render("profile/edit-habit")
+    .then((habitToEdit) => {
+        console.log("The habit you want to edit is this one: " + habitToEdit)
+        res.render("profile/edit-habit", {thisHabit: habitToEdit})
     })
     .catch((error) => {
         console.log("there was an error trying to edit your habit: " + error)
@@ -64,27 +70,29 @@ router.get("/profile/:habitId/edit", (req,res) => {
 })
 
 //route POST for editing a habit (6)
-router.post("/profile/:habitId/edit-habit", (req,res) => {
+router.post("/profile/:habitId/edit", (req,res) => {
     const { habitId } = req.params
-    // const {keys from the model file for the habit} = req.body     !!!!!!!!!!!!!!!
+    const {title, category, duration, description} = req.body    
 
-    Habit.findByIdAndUpdate(habitId)
-        .then((habit) => {
-            console.log("Habit updated: " + habit)
-            res.redirect(`/profile/${habitId}`)
+    Habit.findByIdAndUpdate(habitId, {title, category, duration, description}, {new: true})
+        .then((updatedHabit) => {
+            res.redirect(`/profile/${updatedHabit.id}`)
+            console.log("Habit updated: " + updatedHabit)
         })
         .catch((error) => {
             console.log("Error occured while editing your habit: " + error)
         })
 })
+/* POST route not working */
+
 
 //route POST for deleting a habit (7)
 router.post("/profile/:habitId/delete", (req,res) => {
     const { habitId } = req.params
 
-    Habit.findByIdAndRemove(habitId)
-        .then((habit) => {
-            console.log(habit + " was deleted.")
+    Habit.findByIdAndDelete(habitId)
+        .then((deletedHabit) => {
+            console.log(deletedHabit + " was deleted.")
             res.redirect("/profile")
         })
         .catch((error) => {
