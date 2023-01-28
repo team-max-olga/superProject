@@ -225,6 +225,30 @@ span {
   cursor: pointer;
 }
 
+.delete-button {
+  background-color: white;
+  color: darkred;
+  border: 2px solid darkred;
+}
+
+.delete-button:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #951c12;
+  border: 1px solid #333;
+  color: white;
+  box-shadow: 0 0 10px #333;
+  cursor: pointer;
+}
+
+.go-back {
+  background-image: url(../images/icons/left-arrow.png);
+  background-size: 25px;
+  background-repeat: no-repeat;
+  width: 5px;
+
+  align-items: center;
+}
+
 /* ======================= */
 /* switch buttons for Create-Habit */
 

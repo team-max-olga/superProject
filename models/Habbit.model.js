@@ -21,9 +21,9 @@ const habitSchema = new Schema(
     description: {
       type: String,
     },
-    author: {
+    author: [{
       type: Schema.Types.ObjectId, ref: "User"
-    },
+    }],
 
     /* 
     author: {

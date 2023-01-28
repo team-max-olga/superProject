@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 //route GET for the HabitBoard page (1)
 router.get("/profile", (req, res) => {
-  Habit.find().then((habit, user) => {
+  Habit.find().then((habit) => {
     console.log("Welcome! This is your Habit Board.");
     res.render("profile/habitboard", {
       habit,
@@ -24,21 +24,25 @@ router.get("/profile/create-habit", (req, res) => {
 router.post("/profile/create-habit", (req, res) => {
   const { title, category, duration, description, author } = req.body;
 
-  Habit.create({ title, category, duration, description, author })
-    .then((habit) => {
-      console.log("new habit was created: " + habit);
-      return User.findByIdAndUpdate(author, { $push: { habit: habit._id } });
-    })
-    .then(() => res.redirect("/profile"))
-    .catch((error) => {
-      console.log(
-        "It seems there is an error during creating a new habit: " + error
-      );
-      res.render;
-    });
-});
+    Habit.create({title, category, duration, description, author: req.session.currentUser._id})
+        .then((habit) => {
+            console.log("new habit was created: " + habit)
+            return User.findByIdAndUpdate(author, {$push: {habit: habit._id}})
+        })
+        .then(() => res.redirect("/profile"))
+        .catch((error) => {
+            console.log("It seems there is an error during creating a new habit: " + error)
+            res.render
+        })
+})
+/* 
+    .js
+find user
+access user
+access to the array
+author.habit.push(habit._id)
+ */
 
-//POST with ID goes up
 //route GET for habit details page (4)
 router.get("/profile/habit/:habitId", (req, res) => {
   const { habitId } = req.params;
@@ -57,10 +61,10 @@ router.get("/profile/habit/:habitId", (req, res) => {
 router.get("/profile/:habitId/edit", (req, res) => {
   const { habitId } = req.params;
 
-  Habit.findById(habitId)
-    .then((habit) => {
-      console.log("The habit you want to edit is this one: " + habit);
-      res.render("profile/edit-habit");
+    Habit.findById(habitId)
+    .then((habitToEdit) => {
+        console.log("The habit you want to edit is this one: " + habitToEdit)
+        res.render("profile/edit-habit", {thisHabit: habitToEdit})
     })
     .catch((error) => {
       console.log("there was an error trying to edit your habit: " + error);
@@ -68,32 +72,35 @@ router.get("/profile/:habitId/edit", (req, res) => {
 });
 
 //route POST for editing a habit (6)
-router.post("/profile/:habitId/edit-habit", (req, res) => {
-  const { habitId } = req.params;
-  // const {keys from the model file for the habit} = req.body     !!!!!!!!!!!!!!!
+router.post("/profile/:habitId/edit", (req,res) => {
+    const { habitId } = req.params
+    const {title, category, duration, description} = req.body    
 
-  Habit.findByIdAndUpdate(habitId)
-    .then((habit) => {
-      console.log("Habit updated: " + habit);
-      res.redirect(`/profile/${habitId}`);
-    })
-    .catch((error) => {
-      console.log("Error occured while editing your habit: " + error);
-    });
-});
+    Habit.findByIdAndUpdate(habitId, {title, category, duration, description}, {new: true})
+        .then((updatedHabit) => {
+            res.redirect(`/profile/${updatedHabit.id}`)
+            console.log("Habit updated: " + updatedHabit)
+        })
+        .catch((error) => {
+            console.log("Error occured while editing your habit: " + error)
+        })
+})
+/* POST route not working */
+
 
 //route POST for deleting a habit (7)
 router.post("/profile/:habitId/delete", (req, res) => {
   const { habitId } = req.params;
 
-  Habit.findByIdAndRemove(habitId)
-    .then((habit) => {
-      console.log(habit + " was deleted.");
-      res.redirect("/profile");
-    })
-    .catch((error) => {
-      console.log("Error while deleting a habit: " + error);
-    });
-});
+    Habit.findByIdAndDelete(habitId)
+        .then((deletedHabit) => {
+            console.log(deletedHabit + " was deleted.")
+            res.redirect("/profile")
+        })
+        .catch((error) => {
+            console.log("Error while deleting a habit: " + error)
+        })
+})
 
-module.exports = router;
+
+module.exports = router

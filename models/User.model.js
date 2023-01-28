@@ -9,8 +9,8 @@ const userSchema = new Schema(
       required: [true, "Username is required"],
       trim: true,
     },
-    habit: [{
-      type: Schema.Types.ObjectId, ref: "Habit"
+    habit: [{ 
+      type: Schema.Types.ObjectId, ref: 'Habit' 
     }],
     email: {
       type: String,

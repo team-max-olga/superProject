@@ -1,8 +1,6 @@
 {{#if userInSession}}
 <h2>Welcome, to your HabitBoard, {{ userInSession.username }}!</h2>
-<button>
-    <a href="/profile">Reload the page</a>
-</button>
+
 {{else}}
 <br>
 <p>Still no logged in user, sorry!</p>
@@ -15,22 +13,27 @@
 
 <div class="habit-card-list">
     {{#each habit}}
+    
     <div class="habit-card">
         <div class="habit-card-info">
             <h6 class="habit-category">{{category}} icon</h6> {{!-- to be replaced by the icons --}}
             <h3 class="habit-title">{{title}}</h3>
-            <h4>{{author}}</h4>
         </div>
+
         <hr>
+
         <div class="habit-card-progress">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
+
         <hr>
+
         <div>
             <h6 class="habit-description">Description:
                 <p><span>{{description}}</span></p>
             </h6>
         </div>
+
         <a class="" href="/profile/habit/{{_id}}">About</a>
 
     </div>
