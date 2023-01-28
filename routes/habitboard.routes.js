@@ -1,26 +1,28 @@
-const router = require('express').Router()
-const User = require('../models/User.model')
-const Habit = require("../models/Habbit.model")
-const mongoose = require('mongoose')
+const router = require("express").Router();
+const User = require("../models/User.model");
+const Habit = require("../models/Habbit.model");
+const mongoose = require("mongoose");
 
 //route GET for the HabitBoard page (1)
-router.get("/profile", (req,res) => {
-    Habit.find()
-        .then((habit, user) => {
-            console.log("Welcome! This is your Habit Board.")
-            res.render("profile/habitboard", {habit, user})
-        })
-})
+router.get("/profile", (req, res) => {
+  Habit.find().then((habit, user) => {
+    console.log("Welcome! This is your Habit Board.");
+    res.render("profile/habitboard", {
+      habit,
+      userInSession: req.session.currentUser,
+    });
+  });
+});
 
 //route GET for create a new habit page (2)
-router.get("/profile/create-habit", (req,res) => {
-        res.render("profile/create-habit")
-        console.log("Create a new habit here")
-})
+router.get("/profile/create-habit", (req, res) => {
+  res.render("profile/create-habit");
+  console.log("Create a new habit here");
+});
 
 //route POST for "create a new HABIT" (3)
-router.post("/profile/create-habit", (req,res) => {
-    const {title, category, duration, description, author} = req.body
+router.post("/profile/create-habit", (req, res) => {
+  const { title, category, duration, description, author } = req.body;
 
     Habit.create({title, category, duration, description, /* author: req.session.currentUser._id */})
         .then((habit) => {
@@ -42,22 +44,22 @@ author.habit.push(habit._id)
  */
 
 //route GET for habit details page (4)
-router.get("/profile/habit/:habitId", (req,res) => {
-    const { habitId } = req.params
+router.get("/profile/habit/:habitId", (req, res) => {
+  const { habitId } = req.params;
 
-    Habit.findById(habitId)
+  Habit.findById(habitId)
     .then((habit) => {
-        console.log("This is your habit: " + habit)
-        res.render("profile/habit-details", habit)
+      console.log("This is your habit: " + habit);
+      res.render("profile/habit-details", habit);
     })
     .catch((error) => {
-        console.log("There was an error retrieving your habit page: " + error)
-    })
-})
+      console.log("There was an error retrieving your habit page: " + error);
+    });
+});
 
 //route GET for edit habit page (5)
-router.get("/profile/:habitId/edit", (req,res) => {
-    const { habitId } = req.params
+router.get("/profile/:habitId/edit", (req, res) => {
+  const { habitId } = req.params;
 
     Habit.findById(habitId)
     .then((habitToEdit) => {
@@ -65,9 +67,9 @@ router.get("/profile/:habitId/edit", (req,res) => {
         res.render("profile/edit-habit", {thisHabit: habitToEdit})
     })
     .catch((error) => {
-        console.log("there was an error trying to edit your habit: " + error)
-    })
-})
+      console.log("there was an error trying to edit your habit: " + error);
+    });
+});
 
 //route POST for editing a habit (6)
 router.post("/profile/:habitId/edit", (req,res) => {
@@ -87,8 +89,8 @@ router.post("/profile/:habitId/edit", (req,res) => {
 
 
 //route POST for deleting a habit (7)
-router.post("/profile/:habitId/delete", (req,res) => {
-    const { habitId } = req.params
+router.post("/profile/:habitId/delete", (req, res) => {
+  const { habitId } = req.params;
 
     Habit.findByIdAndDelete(habitId)
         .then((deletedHabit) => {
@@ -99,5 +101,3 @@ router.post("/profile/:habitId/delete", (req,res) => {
             console.log("Error while deleting a habit: " + error)
         })
 })
-
-module.exports = router

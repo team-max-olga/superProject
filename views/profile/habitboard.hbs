@@ -1,6 +1,14 @@
-<h1>Welcome to your HabitBoard, {{user.username}}</h1>
+{{#if userInSession}}
+<h2>Welcome, to your HabitBoard, {{ userInSession.username }}!</h2>
+<button>
+    <a href="/profile">Reload the page</a>
+</button>
+{{else}}
+<br>
+<p>Still no logged in user, sorry!</p>
+{{/if}}
 
- <br>
+<br>
 <a class="create-button button" href="/profile/create-habit" id="cr-btn">create a new habbit</a>
 <br>
 
