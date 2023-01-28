@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 //route GET for the HabitBoard page (1)
 router.get("/profile", (req, res) => {
-  Habit.find().then((habit, user) => {
+  Habit.find().then((habit) => {
     console.log("Welcome! This is your Habit Board.");
     res.render("profile/habitboard", {
       habit,
@@ -24,7 +24,7 @@ router.get("/profile/create-habit", (req, res) => {
 router.post("/profile/create-habit", (req, res) => {
   const { title, category, duration, description, author } = req.body;
 
-    Habit.create({title, category, duration, description, /* author: req.session.currentUser._id */})
+    Habit.create({title, category, duration, description, author: req.session.currentUser._id})
         .then((habit) => {
             console.log("new habit was created: " + habit)
             return User.findByIdAndUpdate(author, {$push: {habit: habit._id}})
@@ -101,3 +101,6 @@ router.post("/profile/:habitId/delete", (req, res) => {
             console.log("Error while deleting a habit: " + error)
         })
 })
+
+
+module.exports = router
