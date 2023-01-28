@@ -120,7 +120,7 @@ router.post("/login", (req, res, next) => {
         });
       }
       //compareSync() is used to compare the user inputted password with the hashed password in the database
-      else if (bcryptjs.compareSync(password, user.passwordHash)) {
+      else if (bcrypt.compareSync(password, user.passwordHash)) {
         //******* SAVE THE USER IN THE SESSION ********//
         req.session.currentUser = user;
         res.redirect("/profile");
