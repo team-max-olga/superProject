@@ -24,11 +24,11 @@ router.post("/signup", (req, res, next) => {
 
   // Validation of the username with regex
   // Username may include _ and – having a length of 3 to 16 characters
-  const regexUsername = /^[a-z0-9_-]{3,16}$/;
+  const regexUsername = /^[a-z0-9_-]{3,16}$/i;
   if (!regexUsername.test(username)) {
     return res.render("auth/signup", {
       errorMessage:
-        "Please enter a username with a length of 3 to 16 characters. It may include '_'",
+        "Please enter a username with a length of 3 to 16 characters. It should be lowercase and may include '_'.",
     });
   }
 
@@ -65,8 +65,10 @@ router.post("/signup", (req, res, next) => {
     })
     .then((newUserCreatedInDB) => {
       console.log("New created user is: ", newUserCreatedInDB);
-      res.redirect("/login");
+      req.session.currentUser = newUserCreatedInDB;
     })
+    .then(() => res.redirect("/profile"))
+
     .catch((error) => {
       // Check if any of our mongoose validators are not being met
       if (error instanceof mongoose.Error.ValidationError) {
@@ -93,11 +95,12 @@ router.post("/signup", (req, res, next) => {
 
 router.get("/login", (req, res, next) => res.render("auth/login"));
 
-/* router.get("/profile", (req, res, next) => {
-  res.render("profile/habitboard");
-}); */
+// router.get("/profile", (req, res, next) => {
+//   res.render("profile/habitboard");
+// });
 
 router.post("/login", (req, res, next) => {
+  console.log("SESSION =====> ", req.session);
   const { username, email, password } = req.body;
 
   // Checking if the user filled in all the required fields
@@ -108,26 +111,24 @@ router.post("/login", (req, res, next) => {
     });
   }
   // Checking if the user is already registered with our website
-
-  User.findOne({ username })
+  User.findOne({ username, email })
     .then((user) => {
       console.log(user);
       if (!user) {
-        res.render("auth/signup", {
+        return res.render("auth/signup", {
           errorMessage: "User not found please sign up.",
         });
       }
       //compareSync() is used to compare the user inputted password with the hashed password in the database
-      else if (bcrypt.compareSync(password, user.passwordHash)) {
+      else if (bcryptjs.compareSync(password, user.passwordHash)) {
+        //******* SAVE THE USER IN THE SESSION ********//
+        req.session.currentUser = user;
         res.redirect("/profile");
       } else {
-        res.render("auth/login", { errorMessage: "Incorrect Password" });
+        res.render("auth/login", { errorMessage: "Incorrect password." });
       }
     })
-
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch((error) => next(error));
 });
 
 module.exports = router;
