@@ -24,7 +24,7 @@ router.post("/signup", (req, res, next) => {
 
   // Validation of the username with regex
   // Username may include _ and – having a length of 3 to 16 characters
-  const regexUsername = /^[a-z0-9_-]{3,16}$/i;
+  const regexUsername = /^[a-z0-9_-]{3,16}$/i; // i at the end did regex for username case insensitive
   if (!regexUsername.test(username)) {
     return res.render("auth/signup", {
       errorMessage:
@@ -34,7 +34,6 @@ router.post("/signup", (req, res, next) => {
 
   // Validation of the password with regex
   // Password should have 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long
-
   const regexPassword =
     /(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/;
   if (!regexPassword.test(password)) {
@@ -129,6 +128,13 @@ router.post("/login", (req, res, next) => {
       }
     })
     .catch((error) => next(error));
+});
+
+router.post("/logout", (req, res, next) => {
+  req.session.destroy((error) => {
+    if (error) next(error);
+    res.redirect("/login");
+  });
 });
 
 module.exports = router;
