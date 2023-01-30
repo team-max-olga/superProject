@@ -18,8 +18,14 @@
             <h4>Logo</h4>
          </div>
          <div class="title">
-            <a href="/"><h2>HabitHub</h2></a>
+            <a href="/">
+               <h2>HabitHub</h2>
+            </a>
          </div>
+         {{!-- LOGOUT should be done like this, when I use anchor tag, it doesn't work --}}
+         <form id="logout-form" action="/logout" method="POST">
+            <button class="button">Logout</button>
+         </form>
          <div class="buttons">
             <a class="anchor" href="/profile">Profile Page</a>
             <a class="anchor" href="/login">Login</a>
@@ -29,7 +35,7 @@
    </nav>
 
 
-    
+
 
 
 
