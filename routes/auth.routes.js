@@ -3,14 +3,15 @@ const bcrypt = require("bcryptjs");
 User = require("../models/User.model");
 const saltRounds = 10;
 const mongoose = require("mongoose");
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
 // GET route ==> to display the signup form to users
-router.get("/signup", (req, res, next) => {
+router.get("/signup", isLoggedOut, (req, res, next) => {
   res.render("auth/signup");
 });
 
 // POST route ==> to process form data
-router.post("/signup", (req, res, next) => {
+router.post("/signup", isLoggedOut, (req, res, next) => {
   //req.body what a user has submitted
   console.log("Data from user: ", req.body);
   const { username, email, password } = req.body;
@@ -67,7 +68,6 @@ router.post("/signup", (req, res, next) => {
       req.session.currentUser = newUserCreatedInDB;
     })
     .then(() => res.redirect("/profile"))
-
     .catch((error) => {
       // Check if any of our mongoose validators are not being met
       if (error instanceof mongoose.Error.ValidationError) {
@@ -92,13 +92,13 @@ router.post("/signup", (req, res, next) => {
     });
 });
 
-router.get("/login", (req, res, next) => res.render("auth/login"));
+router.get("/login", isLoggedOut, (req, res, next) => res.render("auth/login"));
 
 // router.get("/profile", (req, res, next) => {
 //   res.render("profile/habitboard");
 // });
 
-router.post("/login", (req, res, next) => {
+router.post("/login", isLoggedOut, (req, res, next) => {
   console.log("SESSION =====> ", req.session);
   const { username, email, password } = req.body;
 
@@ -130,7 +130,7 @@ router.post("/login", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.post("/logout", (req, res, next) => {
+router.post("/logout", isLoggedIn, (req, res, next) => {
   req.session.destroy((error) => {
     if (error) next(error);
     res.redirect("/login");
