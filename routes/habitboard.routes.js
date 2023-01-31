@@ -2,9 +2,10 @@ const router = require("express").Router();
 const User = require("../models/User.model");
 const Habit = require("../models/Habbit.model");
 const mongoose = require("mongoose");
+const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
 //route GET for the HabitBoard page (1)
-router.get("/profile", (req, res) => {
+router.get("/profile", isLoggedIn, (req, res) => {
   User.findById(req.session.currentUser._id)
     .populate("habit")
     .then((info) => {
