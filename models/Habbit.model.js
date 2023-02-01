@@ -12,7 +12,7 @@ const habitSchema = new Schema(
     },
     category: {
       type: String,
-      enum: ["Health", "Sport", "Daily Routine", "Work"],
+      enum: ["Health", "Sport", "Daily Routine", "Work", "Art"],
     },
     duration: {
       type: String,
