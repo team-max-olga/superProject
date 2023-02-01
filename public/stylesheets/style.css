@@ -10,6 +10,11 @@ body {
 /* ==================================================================================== */
 /* Layout */
 
+#logo-image {
+  width: 80px;
+  padding: 5px 0;
+}
+
 .anchor {
   letter-spacing: 1px;
   background-color: rgb(41, 58, 115);
@@ -251,6 +256,10 @@ span {
   width: 5px;
 
   align-items: center;
+}
+
+#cell {
+  border: 2px black solid;
 }
 
 /* ======================= */

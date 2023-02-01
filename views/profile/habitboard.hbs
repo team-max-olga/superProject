@@ -19,24 +19,32 @@
 
     <div class="habit-card">
         <div class="habit-card-info">
-            <h6 class="habit-category">{{category}} icon</h6> {{!-- to be replaced by the icons --}}
+           
+            <img src="/images/icons/{{category}}.svg"  width="40"  alt="">
+            {{!-- <img src="/images/icons/{{category}}.png" alt="this should be an image for {{category}} category" width="20" height="20"> --}}
 
-            <img class="category-image health-category {{category}}" id="health-image" src="/images/icons/love.png" alt="" style="display:none">
+            {{!-- <img class="category-image health-category {{category}}" id="health-image" src="/images/icons/love.png" alt="" style="display:none">
             <img class="category-image sport-category {{category}}" id="sport-image" src="/images/icons/sport.png" alt="" style="display:none">
             <img class="category-image routine-category {{category}}" id="routine-image" src="/images/icons/lifestyle.png" alt="" style="display:none">
             <img class="category-image work-category {{category}}" id="work-image" src="/images/icons/hard-work.png" alt="" style="display:none">
-            <img class="category-image art-category {{category}}" id="art-image" src="/images/icons/creativity.png" alt="" style="display:none">
+            <img class="category-image art-category {{category}}" id="art-image" src="/images/icons/creativity.png" alt="" style="display:none"> --}}
 
             <h3 class="habit-title">{{title}}</h3>
         </div>
 
         <hr>
 
-        <div class="habit-card-progress">
-            <div class="week" id="week1" style="display:none">
+        <table>
+            <tr>
+                <td id="cell">cell</td>
+            </tr>
+        </table>
+
+        {{!-- <div class="habit-card-progress">
+            <div class="week" id="week1" >
                 <label for="">Week 1</label>
-                <input type="checkbox" name="" class="input-checkbox">
-                <input type="checkbox" name="" class="input-checkbox">
+                <input type="checkbox" name="day1" class="input-checkbox">
+                <input type="checkbox" name="day2" class="input-checkbox">
                 <input type="checkbox" name="" class="input-checkbox">
                 <input type="checkbox" name="" class="input-checkbox">
                 <input type="checkbox" name="" class="input-checkbox">
@@ -61,9 +69,9 @@
                 <input type="checkbox" name="" id="">
                 <input type="checkbox" name="" id="">
                 <input type="checkbox" name="" id="">
-                <input type="checkbox" name="" id="">
+                <input type="checkbox" name="day21" id="">
             </div>
-        </div>
+        </div> --}}
 
         <hr>
 
@@ -80,3 +88,64 @@
 </div>
 
 <script type="text/javascript" src="/js/script.js"></script>
+
+{{!-- 
+
+// Model
+habitTracked: [ { name: "day1", done: false } , {...}, {....}] 7 / 14 / 21
+ +
+ Mexer na rota de criação
+
+ => "X days"
+ duration.split(' ')[0] = 7, 14, 21
+
+ => Se 7
+ week1Tracker = [{ name: "day1", done: false } , {...}, {....}] = 7 dias
+
+
+
+// HBS
+Week 1:
+{{#each week1Tracker}}
+ {{#if done/checked = true/false}}
+    <input type="checkbox" name={{name}} class="input-checkbox" checked />
+ {{else}}
+    <input type="checkbox" name={{name}} class="input-checkbox" />
+ {{/if}}
+{{/each}}
+Week 2:
+{{#each week2Tracker}}
+ {{#if done}}
+    <input type="checkbox" name={{name}} class="input-checkbox" checked />
+ {{else}}
+    <input type="checkbox" name={{name}} class="input-checkbox" />
+ {{/if}}
+{{/each}}
+
+
+// update.route.js
+req.body = {
+    "day-1": true,
+    day2: true,
+    day3: true,
+    day4: false,
+    day5: true,
+    day6: true,
+    day7: false,
+    day8: true,
+    day9: true,
+}
+
+const updateFrequency = []
+
+for (const day in req.body){
+    const updater = {
+        name: req.body[day]
+        done: day
+    }
+    updateFrequency.push(updater)
+}
+
+f
+
+ --}}

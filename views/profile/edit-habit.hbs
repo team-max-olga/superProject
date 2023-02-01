@@ -25,6 +25,9 @@
 
             <input id="category4" type="radio" name="category" value="Work">
             <label for="category4">Work</label>
+
+            <input id="categoryart" type="radio" name="category" value="Art">
+            <label for="categoryart">Art</label>
         </div>
     </label>
 
@@ -48,8 +51,13 @@
     </label>
 
     <form action="/profile/{{_id}}/edit" method="POST">
-        <button class="button ">Edit Habit</button>
+        <button class="button" id="edit-button" onclick="changeCellColor()">Edit Habit</button>
     </form>
+
+    <div>
+        <input type="checkbox" name="" id="checkbox">
+        <label for="">Change color for the cell</label>
+    </div>
 
 </form>
 

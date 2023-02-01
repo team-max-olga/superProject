@@ -86,7 +86,7 @@ router.post("/profile/:habitId/edit", (req,res) => {
     Habit.findByIdAndUpdate(habitId, {title, category, duration, description}, {new: true})
         .then((updatedHabit) => {
           console.log("Habit updated: " + updatedHabit)
-          res.redirect(`/profile/habit/${updatedHabit.id}`)
+          res.redirect(`/profile`)
         })
         .catch((error) => {
             console.log("Error occured while editing your habit: " + error)
