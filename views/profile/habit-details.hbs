@@ -13,30 +13,36 @@
 
 {{#if week1Tracker}}
   {{#each week1Tracker}}
-  {{#if done}}
+    {{#if done}}
       <input type="checkbox" name={{name}} class="input-checkbox"  checked />
     {{else}}
       <input type="checkbox" name={{name}} class="input-checkbox" />
 {{/if}}
-
   {{/each}}
 {{/if}}
 <br />
-{{#each week2Tracker}}
-  {{#if checked}}
-    <input type="checkbox" name={{name}} class="input-checkbox"  />
-  {{else}}
-    <input type="checkbox" name={{name}} class="input-checkbox" />
-  {{/if}}
-{{/each}}
+{{#if week2Tracker}}
+  {{#each week2Tracker}}
+    {{#if done}}
+      <input type="checkbox" name={{name}} class="input-checkbox"  checked />
+    {{else}}
+      <input type="checkbox" name={{name}} class="input-checkbox" />
+{{/if}}
+  {{/each}}
+{{/if}}
 <br />
-{{#each week3Tracker}}
-  {{#if checked}}
-    <input type="checkbox" name={{name}} class="input-checkbox"  />
-  {{else}}
-    <input type="checkbox" name={{name}} class="input-checkbox" />
-  {{/if}}
-{{/each}}
+{{#if week3Tracker}}
+  {{#each week3Tracker}}
+    {{#if done}}
+      <input type="checkbox" name={{name}} class="input-checkbox"  checked />
+    {{else}}
+      <input type="checkbox" name={{name}} class="input-checkbox" />
+{{/if}}
+  {{/each}}
+{{/if}}
+<br />
+
+
 
 <h3>description: {{description}}</h3>
     <button class="button create-button" type="submit" >TEST ME BUTTON</button>

@@ -34,32 +34,26 @@ router.post("/profile/create-habit", (req, res) => {
   if ("days-7" in req.body) { Habit.create({week1Tracker:week1,  title, category, duration, description, author: req.session.currentUser._id })
   .then((habit) => {
     return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { habit: habit._id } })
-  })
-  
-}
-else if ("days-14" in req.body) { Habit.create({week1Tracker:week1, week2Tracker:week2,  title, category, duration, description, author: req.session.currentUser._id }) 
-.then((habit) => {
-  return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { habit: habit._id } })
-})
-.then(() => {
-  res.redirect("/profile")
-})
-}
-else if ("days-21" in req.body) { Habit.create({week1Tracker:week1, week2Tracker:week2, week3Tracker:week3,  title, category, duration, description, author: req.session.currentUser._id })
-.then((habit) => {
-  return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { habit: habit._id } })
-})
-.then(() => {
-  res.redirect("/profile")})}
+  })}
 
-})
+  else if ("days-14" in req.body) { Habit.create({week1Tracker:week1, week2Tracker:week2,  title, category, duration, description, author: req.session.currentUser._id }) 
+  .then((habit) => {
+    return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { habit: habit._id } })
+  })
+  .then(() => {res.redirect("/profile")})}
+
+  else if ("days-21" in req.body) { Habit.create({week1Tracker:week1, week2Tracker:week2, week3Tracker:week3,  title, category, duration, description, author: req.session.currentUser._id })
+  .then((habit) => {
+    return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { habit: habit._id } })
+  })
+  .then(() => {
+  res.redirect("/profile")})}})
 
 
 //route GET for habit details page (4)
 router.get("/profile/habit/:habitId", (req, res) => {
   const { habitId } = req.params;
   
-
   Habit.findById(habitId)
     .then((habit) => {
       console.log("This is your habit: " + habit);
