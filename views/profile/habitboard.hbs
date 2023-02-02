@@ -15,7 +15,7 @@
 
 
 <div class="habit-card-list">
-    {{#each habit}}
+{{#each habit}}
 
     <div class="habit-card">
         <div class="habit-card-info">
@@ -57,66 +57,16 @@
             {{#each week3Tracker}}
                 {{#if done}}
                     <input type="checkbox" name={{name}} class="input-checkbox" checked />
-                {{else}}
+                    {{else}}
                     <input type="checkbox" name={{name}} class="input-checkbox" />
                 {{/if}}
             {{/each}}
         {{/if}}
-        <br />
 
-{{!--
+        <hr>
 
-// Model ✅
-Tracked-week1: [{ name: "day-1", done: true } , {...}, {...}] week 1 = 1-7
-Tracked-week2: [{ name: "day-8", done: false } , {...}, {...}] week 2 = 8-14
-Tracked-week3: [{ name: "day-15", done: false } , {...}, {...}] week 3 = 15-21
-+
-Mexer na rota de criação ✅
-
-=> "X days"
-duration.split(' ')[0] = 7, 14, 21 ❌
-=> if 7
-week1Tracker = [{ name: "day1", done: false } , {...}, {....}] = 7 days ❌
+        <a class="" href="/profile/habit/{{_id}}">About</a>
 
 
-// HBS ✅
-Week 1:
-{{#each week1Tracker}}
-{{#if done/checked = true/false}}
-<input type="checkbox" name={{name}} class="input-checkbox" checked />
-{{else}}
-<input type="checkbox" name={{name}} class="input-checkbox" />
-{{/if}}
+    </div>    
 {{/each}}
-Week 2:
-{{#each week2Tracker}}
-{{#if done}}
-<input type="checkbox" name={{name}} class="input-checkbox" checked />
-{{else}}
-<input type="checkbox" name={{name}} class="input-checkbox" />
-{{/if}}
-{{/each}}
-
-
-// update.route.js
-req.body = {
-day-1: true,
-day2: true,
-day3: true,
-day4: false,
-day5: true,
-day6: true,
-day7: false,
-}
-
-const updateFrequency = []
-
-for (const day in req.body){
-const updater = {
-name: req.body[day]
-done: day
-}
-updateFrequency.push(updater)
-}
-
---}}
