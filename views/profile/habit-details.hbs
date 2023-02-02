@@ -1,15 +1,59 @@
 <h1>This is a page for habit details</h1>
-<hr>
+
+<hr />
 <a class="button" href="/profile">go back</a>
-<hr>
+<hr />
+
 <h3>{{title}}</h3>
-<h3>{{duration}}</h3>
-<h3>{{description}}</h3>
+
+{{! weeks progression }}
+<form action="/profile/{{_id}}/edit" method="POST">
+
+<h3>duration: {{duration}}</h3>
+
+{{#if week1Tracker}}
+  {{#each week1Tracker}}
+  {{#if done}}
+      <input type="checkbox" name={{name}} class="input-checkbox"  checked />
+    {{else}}
+      <input type="checkbox" name={{name}} class="input-checkbox" />
+{{/if}}
+
+  {{/each}}
+{{/if}}
+<br />
+{{#each week2Tracker}}
+  {{#if checked}}
+    <input type="checkbox" name={{name}} class="input-checkbox"  />
+  {{else}}
+    <input type="checkbox" name={{name}} class="input-checkbox" />
+  {{/if}}
+{{/each}}
+<br />
+{{#each week3Tracker}}
+  {{#if checked}}
+    <input type="checkbox" name={{name}} class="input-checkbox"  />
+  {{else}}
+    <input type="checkbox" name={{name}} class="input-checkbox" />
+  {{/if}}
+{{/each}}
+
+<h3>description: {{description}}</h3>
+    <button class="button create-button" type="submit" >TEST ME BUTTON</button>
+</form>
 
 <form action="/profile/{{_id}}/delete" method="POST">
-    <button class="button delete-button">Delete</button>
+  <button class="button delete-button">Delete</button>
 </form>
 
 <form action="/profile/{{_id}}/edit" method="GET">
-    <button class="button" >Edit Details</button>
+  <button class="button">Edit Details</button>
 </form>
+
+
+
+{{!-- 
+button in the form
+form with the if statements
+
+ --}}

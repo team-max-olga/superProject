@@ -1,13 +1,8 @@
-
-
 {{#if _id}}
 <h2>Welcome, to your HabitBoard, {{ username }}!</h2>
-
 {{else}}
-<br>
 <p>Still no logged in user, sorry!</p>
 {{/if}}
-
 
 <br>
 <a class="create-button button" href="/profile/create-habit" id="cr-btn">create a new habbit</a>
@@ -19,26 +14,67 @@
 
     <div class="habit-card">
         <div class="habit-card-info">
-           
             <img src="/images/icons/{{category}}.svg"  width="40"  alt="">
-            {{!-- <img src="/images/icons/{{category}}.png" alt="this should be an image for {{category}} category" width="20" height="20"> --}}
-
-            {{!-- <img class="category-image health-category {{category}}" id="health-image" src="/images/icons/love.png" alt="" style="display:none">
-            <img class="category-image sport-category {{category}}" id="sport-image" src="/images/icons/sport.png" alt="" style="display:none">
-            <img class="category-image routine-category {{category}}" id="routine-image" src="/images/icons/lifestyle.png" alt="" style="display:none">
-            <img class="category-image work-category {{category}}" id="work-image" src="/images/icons/hard-work.png" alt="" style="display:none">
-            <img class="category-image art-category {{category}}" id="art-image" src="/images/icons/creativity.png" alt="" style="display:none"> --}}
-
             <h3 class="habit-title">{{title}}</h3>
         </div>
+        
 
-        <hr>
+        <hr> {{!-- week progression  --}}
+    {{#if week1Tracker}}               
+        {{#each week1Tracker}}
+            {{#if checked}}
+                <input type="checkbox" name={{name}} class="input-checkbox" checked />
+            {{else}}
+                <input type="checkbox" name={{name}} class="input-checkbox" />
+            {{/if}}
+        {{/each}}
+    {{/if}}
+    <br>
+        {{#each week2Tracker}}
+            {{#if checked}}
+                <input type="checkbox" name={{name}} class="input-checkbox" checked />
+            {{else}}
+                <input type="checkbox" name={{name}} class="input-checkbox" />
+            {{/if}}
+        {{/each}}
+    <br>
+        {{#each week3Tracker}}
+            {{#if checked}}
+                <input type="checkbox" name={{name}} class="input-checkbox" checked />
+            {{else}}
+                <input type="checkbox" name={{name}} class="input-checkbox" />
+            {{/if}}
+        {{/each}}
 
-        <table>
-            <tr>
-                <td id="cell">cell</td>
+        {{!-- <table>
+            <tr class="table-row">
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
             </tr>
-        </table>
+            <tr class="table-row">
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+            </tr>
+            <tr class="table-row">
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+                <td class="cell">cell</td>
+            </tr>
+        </table> --}}
 
         {{!-- <div class="habit-card-progress">
             <div class="week" id="week1" >
@@ -91,20 +127,20 @@
 
 {{!-- 
 
-// Model
-habitTracked: [ { name: "day1", done: false } , {...}, {....}] 7 / 14 / 21
+// Model ✅
+Tracked-week1: [{ name: "day-1", done: true } , {...}, {...}] week 1 = 1-7
+Tracked-week2: [{ name: "day-8", done: false } , {...}, {...}] week 2 = 8-14
+Tracked-week3: [{ name: "day-15", done: false } , {...}, {...}] week 3 = 15-21
  +
- Mexer na rota de criação
+ Mexer na rota de criação ✅
 
  => "X days"
- duration.split(' ')[0] = 7, 14, 21
-
- => Se 7
- week1Tracker = [{ name: "day1", done: false } , {...}, {....}] = 7 dias
-
+ duration.split(' ')[0] = 7, 14, 21 ❌
+ => if 7
+ week1Tracker = [{ name: "day1", done: false } , {...}, {....}] = 7 days ❌
 
 
-// HBS
+// HBS ✅
 Week 1:
 {{#each week1Tracker}}
  {{#if done/checked = true/false}}
@@ -125,18 +161,16 @@ Week 2:
 
 // update.route.js
 req.body = {
-    "day-1": true,
+    day-1: true,
     day2: true,
     day3: true,
     day4: false,
     day5: true,
     day6: true,
     day7: false,
-    day8: true,
-    day9: true,
 }
 
-const updateFrequency = []
+const updateFrequency = [] 
 
 for (const day in req.body){
     const updater = {
@@ -145,7 +179,5 @@ for (const day in req.body){
     }
     updateFrequency.push(updater)
 }
-
-f
 
  --}}

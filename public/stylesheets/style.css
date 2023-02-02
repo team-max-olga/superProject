@@ -15,6 +15,12 @@ body {
   padding: 5px 0;
 }
 
+#layout-title {
+  text-decoration: none;
+  cursor:auto;
+  user-select: none;
+}
+
 .anchor {
   letter-spacing: 1px;
   background-color: rgb(41, 58, 115);
@@ -147,6 +153,13 @@ span {
   font-style: italic;
 }
 
+td {
+  border: 2px black solid;
+  margin: 0 10px;
+}
+
+
+
 /* ==================================================================================== */
 /* New-Habit */
 
@@ -258,17 +271,15 @@ span {
   align-items: center;
 }
 
-#cell {
-  border: 2px black solid;
-}
+
 
 /* ======================= */
 /* switch buttons for Create-Habit */
 
 
-/* .week {
-  display: none;
-} */
+.week {
+  margin: 25px 50px;
+}
 
 /* const day21 = document.querysafwqn
 

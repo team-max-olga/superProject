@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("superProject JS imported successfully!");
 });
 
-function chooseDuration() {
+/* function chooseDuration() {
   let days7 = document.getElementById("duration7days").checked
   let days14 = document.getElementById("duration14days").checked
   let days21 = document.getElementById("duration21days").checked
@@ -30,8 +30,6 @@ function chooseDuration() {
   }
 }
 
-/* ========================================== */
-
 function changeCellColor() {
   let checkbox = document.getElementById("checkbox")
   let tableCell = document.getElementById("cell")
@@ -42,4 +40,4 @@ function changeCellColor() {
       tableCell.style.backgroundColor = "green"
     }
   })
-}
+} */
