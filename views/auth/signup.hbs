@@ -1,4 +1,4 @@
-<div class="auth-container">
+{{!-- <div class="auth-container">
     <h2>Sign up</h2>
     <p>and start using HabitHub</p>
     <form class="auth-form" action="/signup" method="POST">
@@ -24,4 +24,40 @@
         <p class="error">{{errorMessage}}</p>
         {{/if}}
     </form>
+</div> --}}
+
+
+<div class="auth-container">
+    <div class="auth-contact-box">
+        <div class="auth-left"></div>
+        <div class="auth-right">
+            <h2 class="auth">Sign Up</h2>
+            <p>and start using TrackIt</p>
+            <form class="auth-form" action="/signup" method="POST">
+                <label for="">Username:
+                    <input type="text" class="auth-field" name="username" placeholder="Your Username">
+                    (3 to 16 characters. It may include '_')
+                </label>
+
+                <label for="">Email:
+                    <input type="text" class="auth-field" name="email" placeholder="name@example.com">
+                </label>
+                <label for="">Password:
+                    <input type="password" class="auth-field" name="password" placeholder="Minimum 8 characters">
+                    Must include Uppercase Letter, Lowercase Letter and Numbers.
+                </label>
+                {{!-- <textarea placeholder="Message" class="auth-field"></textarea> --}}
+
+                {{!-- <button class="auth-btn">Send</button> --}}
+                <button class="create-button button" type="submit">Create Account</button>
+                <p>Already have an account? <a href="/login">Login</a></p>
+
+                {{!-- error message --}}
+
+                {{#if errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+                {{/if}}
+            </form>
+        </div>
+    </div>
 </div>
