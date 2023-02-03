@@ -1,3 +1,9 @@
+<div>
+    <form id="logout-form" action="/logout" method="POST">
+        <button class="anchor">Logout</button>
+    </form>
+</div>
+
 {{#if _id}}
 <h2>Welcome, to your HabitBoard, {{ username }}!</h2>
 {{else}}
@@ -8,6 +14,36 @@
 <a class="create-button button" href="/profile/create-habit" id="cr-btn">create a new habbit</a>
 <br>
 
+
+<div class="habit-card-list">
+    {{#each habit}}
+
+    <div class="habit-card">
+        <div class="habit-card-info">
+            <img src="/images/icons/{{category}}.svg" alt="" width="20" height="20">
+            {{!-- <h6 class="habit-category">{{category}} icon</h6> to be replaced by the icons --}}
+            <h3 class="habit-title">{{title}}</h3>
+        </div>
+
+
+        <hr>
+
+        <div class="habit-card-progress">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+
+        <hr>
+
+        <div>
+            <h6 class="habit-description">Description:
+                <p><span>{{description}}</span></p>
+            </h6>
+        </div>
+
+        <a class="" href="/profile/habit/{{_id}}">About</a>
+
+    </div>
+    {{/each}}
 <div class="error">
     <h3>habit-details.hbs page to pop-up</h3>
     <h5>other way of doing it -> ask Omar</h5>

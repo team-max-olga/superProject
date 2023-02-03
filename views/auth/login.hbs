@@ -1,4 +1,37 @@
 <div class="auth-container">
+    <div class="auth-contact-box">
+        {{!-- <div class="auth-left"></div>
+        <div class="auth-right"> --}}
+            <h2 class="auth">Log In</h2>
+            <p>Welcome back!</p>
+            <form class="auth-form" action="/login" method="POST">
+                <label for="username" class="auth-form-label">Username:</label>
+                <input type="text" class="auth-field" name="username" placeholder="Your Username">
+
+                <label for="email" class="auth-form-label">Email:</label>
+                <input type="text" class="auth-field" name="email" placeholder="name@example.com">
+
+                <label for="password" class="auth-form-label">Password:</label>
+                <input type="password" class="auth-field" name="password" placeholder="Minimum 8 characters">
+
+                <button class="create-button button auth-btn" type="submit">Log In</button>
+                <p>Don't have an account yet? <a href="/signup">Sign Up</a></p>
+
+                {{!-- error message --}}
+
+                {{#if errorMessage}}
+                <p class="error">{{errorMessage}}</p>
+                {{/if}}
+            </form>
+        {{!-- </div> --}}
+    </div>
+</div> 
+
+
+
+
+{{!-- 
+<div class="auth-container">
     <h2>Log in</h2>
     <p>Welcome back!</p>
     <form class="auth-form" action="/login" method="POST">
@@ -22,4 +55,4 @@
         <p class="error">{{errorMessage}}</p>
         {{/if}}
     </form>
-</div>
+</div> --}}
