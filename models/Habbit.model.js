@@ -12,7 +12,7 @@ const habitSchema = new Schema(
     },
     category: {
       type: String,
-      enum: ["Health", "Sport", "Daily Routine", "Work"],
+      enum: ["Health", "Sport", "Daily Routine", "Work", "Art"],
     },
     duration: {
       type: String,
@@ -23,6 +23,27 @@ const habitSchema = new Schema(
     },
     author: [{
       type: Schema.Types.ObjectId, ref: "User"
+    }],
+    week1Tracker: [{
+      name: String,
+      done: {
+        type: Boolean,
+        default: false
+      }
+    }],
+    week2Tracker: [{
+      name: String,
+      done: {
+        type: Boolean,
+        default: false
+      }
+    }],
+    week3Tracker: [{
+      name: String,
+      done: {
+        type: Boolean,
+        default: false
+      }
     }],
 
     /* 

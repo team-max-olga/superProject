@@ -20,6 +20,17 @@ body{
 /* ==================================================================================== */
 /* Layout */
 
+#logo-image {
+  width: 80px;
+  padding: 5px 0;
+}
+
+#layout-title {
+  text-decoration: none;
+  cursor:auto;
+  user-select: none;
+}
+
 .anchor {
   letter-spacing: 1px;
   background-color: rgb(41, 58, 115);
@@ -61,6 +72,10 @@ body{
 /* ==================================================================================== */
 /* HabitBoard */
 
+.category-image {
+  width: 50px;
+}
+
 hr {
   border: 5px solid black;
 }
@@ -97,6 +112,13 @@ hr {
 span {
   font-style: italic;
 }
+
+td {
+  border: 2px black solid;
+  margin: 0 10px;
+}
+
+
 
 /* ==================================================================================== */
 /* New-Habit */
@@ -209,13 +231,15 @@ span {
   align-items: center;
 }
 
+
+
 /* ======================= */
 /* switch buttons for Create-Habit */
 
 
-/* .week {
-  display: none;
-} */
+.week {
+  margin: 25px 50px;
+}
 
 /* const day21 = document.querysafwqn
 

@@ -6,9 +6,7 @@
 
 {{#if _id}}
 <h2>Welcome, to your HabitBoard, {{ username }}!</h2>
-
 {{else}}
-<br>
 <p>Still no logged in user, sorry!</p>
 {{/if}}
 
@@ -46,50 +44,65 @@
 
     </div>
     {{/each}}
+<div class="error">
+    <h3>habit-details.hbs page to pop-up</h3>
+    <h5>other way of doing it -> ask Omar</h5>
 </div>
 
 
+<div class="habit-card-list">
+{{#each habit}}
 
-{{!-- <div class="habit-list">
-    <div class="habit-item">
-        <div class="left-side">
-            <h3>Habit Name</h3>
-            <h6>Category icon</h6>
-            <h6>Description</h6>
+    <div class="habit-card">
+        <div class="habit-card-info">
+            <img src="/images/icons/{{category}}.svg" width="40" alt="">
+            <h3 class="habit-title">{{title}}</h3>
         </div>
-        <div class="right-side">
-            <div class="tracking">
-                <div class="week1 week">
-                    <p>Week 1</p>
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                </div>
-                <div class="week2 week">
-                    <p>Week 2</p>
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                </div>
-                <div class="week3 week">
-                    <p>Week 3</p>
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                    <input type="checkbox">
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
+
+
+        <hr> {{!-- week progression --}}
+        {{#if week1Tracker}}
+        <p>week1</p>
+            {{#each week1Tracker}}
+                {{#if done}}
+                    <input type="checkbox" name={{name}} class="input-checkbox" checked disabled/>
+                {{else}}
+                    <input type="checkbox" name={{name}} class="input-checkbox" />
+                {{/if}}
+            {{/each}}
+        {{/if}}
+        <br />
+
+        {{#if week2Tracker}}
+                <p>week2</p>
+
+            {{#each week2Tracker}}
+            
+                {{#if done}}
+                    <input type="checkbox" name={{name}} class="input-checkbox" checked />
+                {{else}}
+                    <input type="checkbox" name={{name}} class="input-checkbox" />
+                {{/if}}
+            {{/each}}
+        {{/if}}
+        <br />
+
+        {{#if week3Tracker}}
+                <p>week3</p>
+
+            {{#each week3Tracker}}
+                {{#if done}}
+                    <input type="checkbox" name={{name}} class="input-checkbox" checked />
+                    {{else}}
+                    <input type="checkbox" name={{name}} class="input-checkbox" />
+                {{/if}}
+            {{/each}}
+        {{/if}}
+
+        <hr>
+
+        <a class="" href="/profile/habit/{{_id}}">About</a>
+
+
+    </div>    
+{{/each}}

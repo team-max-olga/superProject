@@ -2,7 +2,7 @@
 <hr>
 <a class="button" href="/profile/habit/{{_id}}">go back</a>
 <hr>
-<h3>{{title}} this </h3>
+<h3>{{title}}</h3>
 
 
 <form action="/profile/{{_id}}/edit" method="POST">
@@ -25,6 +25,9 @@
 
             <input id="category4" type="radio" name="category" value="Work">
             <label for="category4">Work</label>
+
+            <input id="categoryart" type="radio" name="category" value="Art">
+            <label for="categoryart">Art</label>
         </div>
     </label>
 
@@ -48,7 +51,18 @@
     </label>
 
     <form action="/profile/{{_id}}/edit" method="POST">
-        <button class="button ">Edit Habit</button>
+        <button class="button" id="edit-button" onclick="changeCellColor()">Edit Habit</button>
     </form>
 
+    <div>
+        <input type="checkbox" name="" id="checkbox">
+        <label for="">Change color for the cell</label>
+    </div>
+
 </form>
+
+<form action="">
+    
+</form>
+
+<script type="text/javascript" src="/public/js/script.js"></script>
