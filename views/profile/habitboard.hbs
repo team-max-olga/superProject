@@ -13,7 +13,6 @@
     <h5>other way of doing it -> ask Omar</h5>
 </div>
 
-
 <div class="habit-card-list">
 {{#each habit}}
 
@@ -22,7 +21,6 @@
             <img src="/images/icons/{{category}}.svg" width="40" alt="">
             <h3 class="habit-title">{{title}}</h3>
         </div>
-
 
         <hr> {{!-- week progression --}}
         {{#if week1Tracker}}
@@ -36,12 +34,9 @@
             {{/each}}
         {{/if}}
         <br />
-
         {{#if week2Tracker}}
                 <p>week2</p>
-
             {{#each week2Tracker}}
-            
                 {{#if done}}
                     <input type="checkbox" name={{name}} class="input-checkbox" checked />
                 {{else}}
@@ -50,10 +45,8 @@
             {{/each}}
         {{/if}}
         <br />
-
         {{#if week3Tracker}}
                 <p>week3</p>
-
             {{#each week3Tracker}}
                 {{#if done}}
                     <input type="checkbox" name={{name}} class="input-checkbox" checked />
@@ -62,11 +55,38 @@
                 {{/if}}
             {{/each}}
         {{/if}}
-
         <hr>
+    {{!--         <a class="" href="/profile/habit/{{_id}}">About</a> --}}
+    <button class="button details-button" id="showDialog">Show the dialog</button> <!-- button to open dialog -->
+</div> 
+   
+     {{!-- dialog starts here --}}
+    <dialog id="favDialog">
+    <h5>Your habit &#8608; {{title}}</h5>
+    <h6>Do it for {{duration}}</h6>
 
-        <a class="" href="/profile/habit/{{_id}}">About</a>
-
-
-    </div>    
+    {{#if week1Tracker}}
+    <p>week1</p>
+        {{#each week1Tracker}}
+       
+            {{#if done}}
+                <input type="checkbox" name={{name}} class="input-checkbox" checked disabled/>
+            {{else}}
+                <input type="checkbox" name={{name}} class="input-checkbox" />
+            {{/if}}
+    
+        {{/each}}
+     {{/if}}
+        <div class="button-group">
+            <form method="dialog"> <!-- method="dialog" is essencial to send data -->
+                <button class="button delete-button" value="cancel">Cancel</button>
+                <button class="button create-button" id="confirmBtn" value="default">Confirm</button>
+            </form>
+        </div>
+        
+    </dialog>
+       
 {{/each}}
+
+
+   
