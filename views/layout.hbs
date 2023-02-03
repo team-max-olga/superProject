@@ -21,6 +21,11 @@
          <ul class="menu-items">
             <li class="right"><a href="/signup">Log In</a></li>
             <li class="right"><a href="/login">Signup</a></li>
+            <li>
+               <form id="logout-form" action="/logout" method="POST">
+                  <button class="anchor">Logout</button>
+               </form>
+            </li>
          </ul>
       </div>
    </nav>
@@ -28,13 +33,13 @@
    {{!-- <nav>
       <navbar class="navbar-container">
          <div class="logo-section">
-            
+
             <img id="logo-image" src="/images/logo.png" alt="">
          </div>
          <div class="title">
-            
+
             <h2 id="layout-title">Track-IT</h2>
-            
+
          </div>
          <form id="logout-form" action="/logout" method="POST">
             <button class="anchor">Logout</button>

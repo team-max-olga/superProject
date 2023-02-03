@@ -13,7 +13,7 @@ router.get("/signup", isLoggedOut, (req, res, next) => {
 // POST route ==> to process form data
 router.post("/signup", isLoggedOut, (req, res, next) => {
   //req.body what a user has submitted
-  console.log("Data from user: ", req.body);
+  // console.log("Data from user: ", req.body);
   const { username, email, password } = req.body;
   // Checking if all required fields are provided
   if (!username || !email || !password) {
@@ -54,7 +54,7 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
         return bcrypt.hash(password, salt);
       }) */
     .then((hashedPassword) => {
-      console.log("Hashed Password: ", hashedPassword);
+      // console.log("Hashed Password: ", hashedPassword);
       return User.create({
         username: username,
         email: email,
@@ -112,7 +112,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   // Checking if the user is already registered with our website
   User.findOne({ username, email })
     .then((user) => {
-      console.log(user);
+      // console.log(user);
       if (!user) {
         return res.render("auth/signup", {
           errorMessage: "User not found please sign up.",
