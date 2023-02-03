@@ -1,3 +1,9 @@
+<div>
+    <form id="logout-form" action="/logout" method="POST">
+        <button class="anchor">Logout</button>
+    </form>
+</div>
+
 {{#if _id}}
 <h2>Welcome, to your HabitBoard, {{ username }}!</h2>
 
@@ -13,10 +19,10 @@
 
 <div class="habit-card-list">
     {{#each habit}}
-    
+
     <div class="habit-card">
         <div class="habit-card-info">
-        <img src="/images/icons/{{category}}.svg" alt="" width="20" height="20">
+            <img src="/images/icons/{{category}}.svg" alt="" width="20" height="20">
             {{!-- <h6 class="habit-category">{{category}} icon</h6> to be replaced by the icons --}}
             <h3 class="habit-title">{{title}}</h3>
         </div>
