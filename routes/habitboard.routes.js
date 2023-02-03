@@ -6,12 +6,9 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
 //route GET for the HabitBoard page (1)
 router.get("/profile", isLoggedIn, (req, res) => {
-  console.log(req.body)
-
   User.findById(req.session.currentUser._id)
     .populate("habit")
     .then((info) => {
-      console.log(info)
       res.render("profile/habitboard", info)
     })
 });
@@ -19,7 +16,6 @@ router.get("/profile", isLoggedIn, (req, res) => {
 //route GET for create a new habit page (2)
 router.get("/profile/create-habit", (req, res) => {
   res.render("profile/create-habit");
-  console.log("Create a new habit here");
 });
 
 let week1 = [{ name: "day-1", done: false }, { name: "day-2", done: false }, { name: "day-3", done: false }, { name: "day-4", done: false }, { name: "day-5", done: false }, { name: "day-6", done: false }, { name: "day-7", done: false }]
@@ -56,7 +52,6 @@ router.get("/profile/habit/:habitId", (req, res) => {
   
   Habit.findById(habitId)
     .then((habit) => {
-      console.log("This is your habit: " + habit);
       res.render("profile/habit-details", habit);
     })
     .catch((error) => {
@@ -70,7 +65,6 @@ router.get("/profile/:habitId/edit", (req, res) => {
 
   Habit.findById(habitId)
     .then((habitToEdit) => {
-      console.log("The habit you want to edit is this one: " + habitToEdit)
       res.render("profile/edit-habit", habitToEdit)
     })
     .catch((error) => {
@@ -81,15 +75,12 @@ router.get("/profile/:habitId/edit", (req, res) => {
 //route POST for editing a habit (6)
 router.post("/profile/:habitId/edit", (req, res) => {
   const { habitId } = req.params
-  const { title, category, duration, week1, week2, week3, description } = req.body
-  console.log(req.body)
+  const { title, category, duration, description } = req.body
 
-  
-
-  Habit.findByIdAndUpdate(habitId, { title, category, duration, description }, { new: true })
+  Habit.findByIdAndUpdate(habitId, {title, category, duration, description }, { new: true })
     .then((updatedHabit) => {
-      console.log("Habit updated: " + updatedHabit)
       res.redirect(`/profile`)
+      console.log("this are updated days: ", req.body)
     })
     .catch((error) => {
       console.log("Error occured while editing your habit: " + error)
@@ -104,7 +95,6 @@ router.post("/profile/:habitId/delete", (req, res) => {
 
   Habit.findByIdAndDelete(habitId)
     .then((deletedHabit) => {
-      console.log(deletedHabit + " was deleted.")
       res.redirect("/profile")
     })
     .catch((error) => {
