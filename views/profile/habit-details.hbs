@@ -10,12 +10,12 @@
 <form action="/profile/{{_id}}/edit" method="POST">
 
 <h3>duration: {{duration}}</h3>
-<div name="week1Tracker">
-  {{#if week1Tracker}}
+<h3>description: {{description}}</h3>
+
+{{#if week1Tracker}}
   {{#each week1Tracker}}
     {{#if done}}
-
-      <input type="checkbox" name={{name}} class="input-checkbox"  checked />
+      <input type="checkbox" name={{name}} class="input-checkbox"  checked disabled/>
     {{else}}
       <input type="checkbox" name={{name}} class="input-checkbox" />
 {{/if}}
@@ -24,6 +24,7 @@
 </div>
 
 <br />
+
 {{#if week2Tracker}}
   {{#each week2Tracker}}
     {{#if done}}
@@ -34,6 +35,8 @@
   {{/each}}
 {{/if}}
 <br />
+
+
 {{#if week3Tracker}}
   {{#each week3Tracker}}
     {{#if done}}
@@ -47,7 +50,7 @@
 
 
 
-<h3>description: {{description}}</h3>
+
     <button class="button create-button" type="submit" >TEST ME BUTTON</button>
 </form>
 
