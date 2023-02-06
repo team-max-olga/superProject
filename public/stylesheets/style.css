@@ -52,7 +52,7 @@ body{
   cursor: pointer;
 }
 
-.navbar-container {
+/* .navbar-container {
   background: linear-gradient(to right, rgb(183, 68, 30), rgb(206, 93, 38));
   border-bottom: 1px black solid;
   display: flex;
@@ -60,7 +60,7 @@ body{
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
-}
+} */
 
 /* ==================================================================================== */
 /* Index Page */
@@ -69,8 +69,61 @@ body{
   justify-content: space-evenly;
 }
 
+.carousel-inner {
+  /* border: 5px solid red;
+  background-color: white; */
+  width: 50ch;
+
+  margin-left: 300px;
+  margin-top: 100px;
+
+  display: flex;
+  text-align: center;
+
+  user-select: none;
+
+}
+
+.carousel-item h6 {
+  font-size: 1.75rem;
+  font-family: 'Dancing Script', cursive;
+
+  /* background: linear-gradient(45deg, black, grey);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.carousel-item p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-family: 'Bebas Neue', cursive;
+
+  padding-top: 15px;
+  letter-spacing: 1px;
+}
+
 /* ==================================================================================== */
 /* HabitBoard */
+
+.welcome {
+  text-align: center;
+  padding-top: 80px;
+  
+  background: linear-gradient(to left, red, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.welcome h2 {
+  font-weight: 600;
+  margin-right: 60px;
+}
+
+.new-habit-button {
+  display: flex;
+  justify-content: center;
+  margin-right: 50px;
+}
 
 .category-image {
   width: 50px;
@@ -258,15 +311,19 @@ day21.checked = document.queryselector().setAtribute(style.display: block)
 }
 
 .auth-container {
-  margin: 0;
   background: url(../images/diary-bg-2.jpg) 30% no-repeat;
   background-size: cover;
+  background-position: center;
+  
   display: flex;
   flex-grow: 1;
-  width: 100%;
-  height: 100%;
   justify-content: center;
   align-items: center;
+  
+  
+  width: 100%;
+  height: 100%;
+  /*   margin: 0; */
   padding: 20px 100px;
   /* margin-block: 10vh; */
 }
@@ -285,16 +342,19 @@ day21.checked = document.queryselector().setAtribute(style.display: block)
 } */
 
 .auth-contact-box {
-  max-width: 850px;
+  /* background-color: #bfc2c7; */
+  width: 350px;
+  margin-top: 60px;
+  margin-left: 300px;
+
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #bfc2c7;
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr); */
   /* OPACITY */
-  box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19); */
 }
 
 /* .auth-left {
@@ -465,8 +525,9 @@ day21.checked = document.queryselector().setAtribute(style.display: block)
   right: 0;
   z-index: 9999;
   width: 100%;
-  height: 50px;
+  height: 70px;
   background-color: none;
+  border-bottom: 2px solid black;
 }
 
 /* The element at the top of the page right after the fixed navigation bar
@@ -477,6 +538,10 @@ day21.checked = document.queryselector().setAtribute(style.display: block)
 .fixed-nav-bar a {
   height: 50px;
   line-height: 50px;
+}
+
+.logo-image {
+  width: 100px;
 }
 
 .menu {
@@ -500,6 +565,7 @@ day21.checked = document.queryselector().setAtribute(style.display: block)
 }
 
 .sitename {
+  /* color: black; */
   display: inline-block;
   margin-right: 20px;
   margin-left: 10px;
@@ -507,7 +573,7 @@ day21.checked = document.queryselector().setAtribute(style.display: block)
 
 a.sitename,
 a:visited.sitename {
-  color: #e0e0e0;
+  color: black;
 }
 
 .menu-items li {
