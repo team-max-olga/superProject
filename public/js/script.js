@@ -2,3 +2,4 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("superProject JS imported successfully!");
 });
+

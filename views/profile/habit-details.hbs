@@ -1,0 +1,37 @@
+<h1>Edit your progression</h1>
+
+<hr />
+<a class="button" href="/profile">go back</a>
+<hr />
+
+<h3>{{title}}</h3>
+
+{{! weeks progression }}
+<form action="/profile/{{_id}}/edit-progression" method="POST">
+
+  <h5>duration: {{duration}}</h5>
+  <h5>category: {{category}}</h5>
+  <h5>description: {{description}}</h5>
+
+  <div>
+    {{#if days}}
+      {{#each days}}
+        {{#if done}}
+          <input type="checkbox" name={{name}} class="input-checkbox" checked />
+        {{else}}
+          <input type="checkbox" name={{name}} class="input-checkbox" />
+        {{/if}}
+      {{/each}}
+    {{/if}}
+  </div>
+
+  <button class="button create-button" type="submit">TEST ME BUTTON</button>
+</form>
+
+<form action="/profile/{{_id}}/delete" method="POST">
+  <button class="button delete-button">Delete</button>
+</form>
+
+<form action="/profile/{{_id}}/edit" method="GET">
+  <button class="button">Edit Details</button>
+</form>

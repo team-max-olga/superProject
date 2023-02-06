@@ -1,0 +1,69 @@
+<h1>This is a new habit page</h1>
+<a class="button" href="/profile">go back</a>
+<h2>Add your new Habit</h2>
+
+<div class="habit-container">
+    <form class="create-form" action="/profile/create-habit" method="POST">
+
+        {{!-- Title --}}
+        <div>
+            <label for="">
+                <h4>Title:</h4>
+                <input type="text" name="title" placeholder="Drink 2L of water everyday">
+            </label>
+        </div>
+
+        {{!-- Category --}}
+        <div>
+            <label class="radio-button" for="">
+                <h4>Category</h4>
+                <div class="input-options">
+                    <input id="categoryhealth" type="radio" name="category" value="Health">
+                    <label for="categoryhealth">Health</label>
+
+                    <input id="categorysport" type="radio" name="category" value="Sport">
+                    <label for="categorysport">Sport</label>
+
+                    <input id="categoryroutine" type="radio" name="category" value="Daily Routine">
+                    <label for="categoryroutine">Daily Routine</label>
+
+                    <input id="categorywork" type="radio" name="category" value="Work">
+                    <label for="categorywork">Work</label>
+
+                    <input id="categoryart" type="radio" name="category" value="Art">
+                    <label for="categoryart">Art</label>
+                </div>
+            </label>
+        </div>
+
+        {{!-- Duration --}}
+        <div>
+            <label class="radio-button" for="">
+                <h4>Duration</h4>
+                <div class="input-options">
+                    <input id="days-7" type="radio" name="days" value="7">
+                    <label for="days-7">7 days</label>
+
+                    <input id="days-14" type="radio" name="days" value="14">
+                    <label for="days-14">14 days</label>
+
+                    <input id="days-21" type="radio" name="days" value="21">
+                    <label for="days-21">21 days</label>
+                </div>
+            </label>
+        </div>
+
+        {{!-- Description --}}
+        <div>
+            <label for="">
+                <h4>Description:</h4>
+                <input type="text" name="description">
+            </label>
+        </div>
+
+        <button class="button create-button" type="submit" >Create New Habit</button>
+    
+    </form>
+</div>
+
+<script type="text/javascript" src="/js/script.js"></script>
