@@ -6,11 +6,13 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
 //route GET for the HabitBoard page (1)
 router.get("/profile", isLoggedIn, (req, res) => {
+  // console.log(req.body)
+
   User.findById(req.session.currentUser._id)
     .populate("habit")
     .then((info) => {
-      res.render("profile/habitboard", info)
-    })
+      res.render("profile/habitboard", info);
+    });
 });
 
 //route GET for create a new habit page (2)
@@ -18,40 +20,48 @@ router.get("/profile/create-habit", (req, res) => {
   res.render("profile/create-habit");
 });
 
-let week1 = [{ name: "day-1", done: false }, { name: "day-2", done: false }, { name: "day-3", done: false }, { name: "day-4", done: false }, { name: "day-5", done: false }, { name: "day-6", done: false }, { name: "day-7", done: false }]
-let week2 = [{ name: "day-8", done: false }, { name: "day-9", done: false }, { name: "day-10", done: false }, { name: "day-11", done: false }, { name: "day-12", done: false }, { name: "day-13", done: false }, { name: "day-14", done: false }]
-let week3 = [{ name: "day-15", done: false }, { name: "day-16", done: false }, { name: "day-17", done: false }, { name: "day-18", done: false }, { name: "day-19", done: false }, { name: "day-20", done: false }, { name: "day-21", done: false }]
-
 //route POST for "create a new HABIT" (3)
 router.post("/profile/create-habit", (req, res) => {
-  const { title, category, duration, description, author } = req.body;
-  console.log(req.body)
+  const { title, category, duration, description, author, days } = req.body;
+  console.log(req.body);
 
-  if ("days-7" in req.body) { Habit.create({week1Tracker:week1,  title, category, duration, description, author: req.session.currentUser._id })
-  .then((habit) => {
-    return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { habit: habit._id } })
-  })}
+  let daysOfHabit = [];
 
-  else if ("days-14" in req.body) { Habit.create({week1Tracker:week1, week2Tracker:week2,  title, category, duration, description, author: req.session.currentUser._id }) 
-  .then((habit) => {
-    return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { habit: habit._id } })
+  if (days) {
+    console.log(days);
+    const arrayToLoop = Array.from(Array(Number(days)).keys());
+    console.log(arrayToLoop);
+    arrayToLoop.forEach((element) => {
+      const day = { name: `day${element + 1}`, done: false };
+      daysOfHabit = [...daysOfHabit, day];
+    });
+  }
+  console.log("daysOfHabit", daysOfHabit);
+  Habit.create({
+    title,
+    category,
+    duration,
+    description,
+    author: req.session.currentUser._id,
+    days: daysOfHabit,
   })
-  .then(() => {res.redirect("/profile")})}
-
-  else if ("days-21" in req.body) { Habit.create({week1Tracker:week1, week2Tracker:week2, week3Tracker:week3,  title, category, duration, description, author: req.session.currentUser._id })
-  .then((habit) => {
-    return User.findByIdAndUpdate(req.session.currentUser._id, { $push: { habit: habit._id } })
-  })
-  .then(() => {
-  res.redirect("/profile")})}})
-
+    .then((habit) => {
+      return User.findByIdAndUpdate(req.session.currentUser._id, {
+        $push: { habit: habit._id },
+      });
+    })
+    .then(() => {
+      res.redirect("/profile");
+    });
+});
 
 //route GET for habit details page (4)
 router.get("/profile/habit/:habitId", (req, res) => {
   const { habitId } = req.params;
-  
+
   Habit.findById(habitId)
     .then((habit) => {
+      // console.log("This is your habit: " + habit);
       res.render("profile/habit-details", habit);
     })
     .catch((error) => {
@@ -65,7 +75,8 @@ router.get("/profile/:habitId/edit", (req, res) => {
 
   Habit.findById(habitId)
     .then((habitToEdit) => {
-      res.render("profile/edit-habit", habitToEdit)
+      // console.log("The habit you want to edit is this one: " + habitToEdit)
+      res.render("profile/edit-habit", habitToEdit);
     })
     .catch((error) => {
       console.log("there was an error trying to edit your habit: " + error);
@@ -74,20 +85,21 @@ router.get("/profile/:habitId/edit", (req, res) => {
 
 //route POST for editing a habit (6)
 router.post("/profile/:habitId/edit", (req, res) => {
-  const { habitId } = req.params
-  const { title, category, duration, description } = req.body
+  const { habitId } = req.params;
+  const { title, category, duration, description } = req.body;
 
-  Habit.findByIdAndUpdate(habitId, {title, category, duration, description }, { new: true })
+  Habit.findByIdAndUpdate(
+    habitId,
+    { title, category, duration, description },
+    { new: true }
+  )
     .then((updatedHabit) => {
-      res.redirect(`/profile`)
-      console.log("this are updated days: ", req.body)
+      res.redirect(`/profile`);
     })
     .catch((error) => {
-      console.log("Error occured while editing your habit: " + error)
-    })
-})
-/* POST route not working */
-
+      console.log("Error occured while editing your habit: " + error);
+    });
+});
 
 //route POST for deleting a habit (7)
 router.post("/profile/:habitId/delete", (req, res) => {
@@ -95,12 +107,39 @@ router.post("/profile/:habitId/delete", (req, res) => {
 
   Habit.findByIdAndDelete(habitId)
     .then((deletedHabit) => {
-      res.redirect("/profile")
+      res.redirect("/profile");
     })
     .catch((error) => {
-      console.log("Error while deleting a habit: " + error)
+      console.log("Error while deleting a habit: " + error);
+    });
+});
+
+//route POST for editing a progression (8)
+router.post("/profile/:habitId/edit-progression", (req, res) => {
+  const { habitId } = req.params;
+
+  const daysToChange = req.body;
+
+  Habit.findById(habitId)
+    .then((myHabit) => {
+      const newDays = myHabit.days.map((day) => {
+        const foundInDaysToChange = Object.keys(daysToChange).find(
+          (el) => el === day.name
+        );
+        if (foundInDaysToChange) {
+          day.done = true;
+        } else {
+          day.done = false;
+        }
+        return day;
+      });
+      return newDays;
     })
-})
+    .then((newDays) => {
+      Habit.updateOne({ _id: habitId }, { days: newDays }).then(() => {
+        res.redirect("/profile");
+      });
+    });
+});
 
-
-module.exports = router
+module.exports = router;
