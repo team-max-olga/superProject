@@ -1,4 +1,4 @@
-<h1>This is a page for habit details</h1>
+<h1>Edit your progression</h1>
 
 <hr />
 <a class="button" href="/profile">go back</a>
@@ -7,51 +7,25 @@
 <h3>{{title}}</h3>
 
 {{! weeks progression }}
-<form action="/profile/{{_id}}/edit" method="POST">
+<form action="/profile/{{_id}}/edit-progression" method="POST">
 
-<h3>duration: {{duration}}</h3>
-<h3>description: {{description}}</h3>
+  <h5>duration: {{duration}}</h5>
+  <h5>category: {{category}}</h5>
+  <h5>description: {{description}}</h5>
 
-{{#if week1Tracker}}
-  {{#each week1Tracker}}
-    {{#if done}}
-      <input type="checkbox" name={{name}} class="input-checkbox"  checked disabled/>
-    {{else}}
-      <input type="checkbox" name={{name}} class="input-checkbox" />
-{{/if}}
-  {{/each}}
-{{/if}}
-</div>
+  <div>
+    {{#if days}}
+      {{#each days}}
+        {{#if done}}
+          <input type="checkbox" name={{name}} class="input-checkbox" checked />
+        {{else}}
+          <input type="checkbox" name={{name}} class="input-checkbox" />
+        {{/if}}
+      {{/each}}
+    {{/if}}
+  </div>
 
-<br />
-
-{{#if week2Tracker}}
-  {{#each week2Tracker}}
-    {{#if done}}
-      <input type="checkbox" name={{name}} class="input-checkbox"  checked />
-    {{else}}
-      <input type="checkbox" name={{name}} class="input-checkbox" />
-{{/if}}
-  {{/each}}
-{{/if}}
-<br />
-
-
-{{#if week3Tracker}}
-  {{#each week3Tracker}}
-    {{#if done}}
-      <input type="checkbox" name={{name}} class="input-checkbox"  checked />
-    {{else}}
-      <input type="checkbox" name={{name}} class="input-checkbox" />
-{{/if}}
-  {{/each}}
-{{/if}}
-<br />
-
-
-
-
-    <button class="button create-button" type="submit" >TEST ME BUTTON</button>
+  <button class="button create-button" type="submit">TEST ME BUTTON</button>
 </form>
 
 <form action="/profile/{{_id}}/delete" method="POST">
@@ -61,11 +35,3 @@
 <form action="/profile/{{_id}}/edit" method="GET">
   <button class="button">Edit Details</button>
 </form>
-
-
-
-{{!-- 
-button in the form
-form with the if statements
-
- --}}
