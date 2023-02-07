@@ -1,4 +1,5 @@
-<div>
+<div id="profile">
+    <div>
     {{#if _id}}
     <h2>Welcome, to your HabitBoard, {{ username }}!</h2>
     {{else}}
@@ -8,11 +9,6 @@
 
 <div>
     <a class="create-button button" href="/profile/create-habit" id="cr-btn">create a new habit</a>
-</div>
-
-<div class="error">
-    <h3>habit-details.hbs page to pop-up</h3>
-    <h5>other way of doing it -> ask Omar</h5>
 </div>
 
 <div class="habit-card-list">
@@ -44,3 +40,5 @@
     </div>
     {{/each}}
 </div>
+</div>
+
