@@ -255,6 +255,17 @@ td {
   display: flex;
 }
 
+/* ============= */
+/* Popup */
+
+dialog {
+  display: absolute;
+  border: 5px dashed black;
+  border-radius: 8px;
+  background: linear-gradient(45deg, rgba(255, 0, 0, .5), rgba(0, 0, 255, .5));
+  width: 60ch;
+}
+
 
 
 /* 

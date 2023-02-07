@@ -15,13 +15,13 @@
 
   <div>
     {{#if days}}
-      {{#each days}}
-        {{#if done}}
-          <input type="checkbox" name={{name}} class="input-checkbox" checked />
-        {{else}}
-          <input type="checkbox" name={{name}} class="input-checkbox" />
-        {{/if}}
-      {{/each}}
+    {{#each days}}
+    {{#if done}}
+    <input type="checkbox" name={{name}} class="input-checkbox" checked />
+    {{else}}
+    <input type="checkbox" name={{name}} class="input-checkbox" />
+    {{/if}}
+    {{/each}}
     {{/if}}
   </div>
 
@@ -33,5 +33,19 @@
 </form>
 
 <form action="/profile/{{_id}}/edit" method="GET">
-  <button class="button">Edit Details</button>
+  <button class="button details-button">Edit Details</button>
 </form>
+
+<button class="button details-button" id="showDialog">Show the dialog</button>
+
+<div>
+  <dialog id="favDialog">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor quos rem recusandae quidem. Cum porro quae,
+      dolorem reiciendis ipsa ipsum.</p>
+
+    <form method="dialog"> <!-- method="dialog" is essencial to send data -->
+      <button class="button delete-button" value="cancel">Cancel</button>
+      <button class="button create-button" id="confirmBtn" value="default">Confirm</button>
+    </form>
+  </dialog>
+</div>
