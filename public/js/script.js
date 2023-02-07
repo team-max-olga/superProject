@@ -38,17 +38,22 @@ inputField.addEventListener("keyup", function (event) {
 // getUserStatus();
 
 
-const showButton = document.getElementById('showDialog');
-const favDialog = document.getElementById('favDialog');
-const outputBox = document.querySelector('output');
-const selectEl = favDialog.querySelector('select');
-const confirmBtn = favDialog.querySelector('#confirmBtn');
+const showButton = document.getElementById('open-popup');
+const dialog = document.getElementById('dialog-window');
+const confirmBtn = dialog.querySelector('#confirmBtn');
+
+const deleteButton = document.getElementById('deleteButton');
 
 // "Update details" button opens the <dialog> modally
 showButton.addEventListener('click', () => {
-    favDialog.show();
+  console.log("clicked")  
+  dialog.showmodal();
 });
 // "Favorite animal" input sets the value of the submit button
 selectEl.addEventListener('change', (e) => {
   confirmBtn.value = selectEl.value;
 });
+
+deleteButton.addEventListener("click", () => {
+  console.log("clicked")
+})
