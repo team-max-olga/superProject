@@ -27,6 +27,13 @@ const projectName = "superProject";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+// checking if the user is logged in in order to display only relevant pages
+app.use((req, res, next) => {
+  console.log(req.session);
+  app.locals.userInSession = req.session.currentUser;
+  next();
+});
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
