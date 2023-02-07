@@ -46,10 +46,9 @@ const confirmBtn = favDialog.querySelector('#confirmBtn');
 
 // "Update details" button opens the <dialog> modally
 showButton.addEventListener('click', () => {
-    favDialog.showModal();
+    favDialog.show();
 });
 // "Favorite animal" input sets the value of the submit button
 selectEl.addEventListener('change', (e) => {
   confirmBtn.value = selectEl.value;
 });
-
