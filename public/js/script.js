@@ -3,6 +3,26 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("superProject JS imported successfully!");
 });
 
+const showButton = document.getElementById('open-popup');
+const dialog = document.getElementById('dialog-window');
+const confirmBtn = dialog.querySelector('#confirmBtn');
+
+const deleteButton = document.getElementById('deleteButton');
+
+// "Update details" button opens the <dialog> modally
+showButton.addEventListener('click', () => {
+  console.log("clicked")  
+  dialog.showmodal();
+});
+// "Favorite animal" input sets the value of the submit button
+selectEl.addEventListener('change', (e) => {
+  confirmBtn.value = selectEl.value;
+});
+
+deleteButton.addEventListener("click", () => {
+  console.log("clicked")
+})
+
 // LOGIN form is working with Enter Key now
 const form = document.getElementById("login-form");
 const inputField = document.getElementById("input-field");
@@ -38,22 +58,3 @@ inputField.addEventListener("keyup", function (event) {
 // getUserStatus();
 
 
-const showButton = document.getElementById('open-popup');
-const dialog = document.getElementById('dialog-window');
-const confirmBtn = dialog.querySelector('#confirmBtn');
-
-const deleteButton = document.getElementById('deleteButton');
-
-// "Update details" button opens the <dialog> modally
-showButton.addEventListener('click', () => {
-  console.log("clicked")  
-  dialog.showmodal();
-});
-// "Favorite animal" input sets the value of the submit button
-selectEl.addEventListener('change', (e) => {
-  confirmBtn.value = selectEl.value;
-});
-
-deleteButton.addEventListener("click", () => {
-  console.log("clicked")
-})
