@@ -69,8 +69,6 @@ body {
   justify-content: flex-end;
 }
 
-
-
 .nav-link:hover,
 .nav-link:target {
   /* color: #b48192; */
@@ -290,19 +288,45 @@ body {
   margin-left: 15vw;
 }
 
-.new-habit-button {
+
+
+.button {
+  padding: 6px 12px;
   border-radius: 10px;
   font-weight: 100;
   text-decoration: none;
-  padding: 10px 20px;
   background-color: #f4ecef;
   color: #8b7e5c;
   cursor: pointer;
 }
 
-.new-habit-button:hover {
+/* .button {
+  padding: 6px 12px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  font-weight: 100;
+  text-decoration: none;
+} */
+
+.green-button:hover {
   cursor: pointer;
-  color: #824d5f;
+  color: darkolivegreen;
+  border: 3px solid darkolivegreen;
+  box-shadow: 0 0 10px darkolivegreen;
+}
+
+.red-button:hover {
+  cursor: pointer;
+  color: darkred;
+  border: 3px solid darkred;
+  box-shadow: 0 0 10px darkred;
+}
+
+.orange-button:hover {
+  cursor: pointer;
+  color: rgb(185, 124, 11);
+  border: 3px solid rgb(185, 124, 11);
+  box-shadow: 0 0 10px rgb(185, 124, 11);
 }
 
 #about a {
@@ -310,53 +334,41 @@ body {
   color: darkgreen;
 }
 
-.button {
+/* .button {
   letter-spacing: 1px;
   padding: 6px 12px;
   border-radius: 10px;
   font-weight: 400;
   text-transform: uppercase;
   text-decoration: none;
-}
+} */
 
-.create-button {
+/* .create-button {
   background-color: rgba(230, 230, 230, 0.958);
   color: darkgreen;
   border: 2px solid darkgreen;
-}
+} */
 
-.create-button:hover {
+/* .create-button:hover {
   transition: 0.1s ease-in-out;
   background-color: darkgreen;
-  /* border: 1px solid #333; */
   color: white;
   box-shadow: 0 0 3px #333;
   cursor: pointer;
-}
+} */
 
-
-
-
-/*  */
-
-
-
-.category-image {
+/* .category-image {
   width: 50px;
-}
+} */
 
-hr {
-  border: 5px solid black;
-}
-
-.habit-card-list {
+/* .habit-card-list {
   display: flex;
   flex-wrap: wrap;
   gap: .75em;
   margin: 50px 50px;
-}
+} */
 
-.habit-card {
+/* .habit-card {
   margin: 0 10px;
   padding: 10px;
   width: 200px;
@@ -373,18 +385,7 @@ hr {
 
   box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
   transition: 0.3s;
-}
-
-span {
-  font-style: italic;
-}
-
-td {
-  border: 2px black solid;
-  margin: 0 10px;
-}
-
-
+} */
 
 /* ==================================================================================== */
 /* New-Habit */
@@ -406,18 +407,15 @@ td {
   flex-wrap: wrap;
   min-width: 400px;
   max-width: 30%;
-
   background: rgba(245, 245, 245, .4);
   border: 2px black solid;
   border-radius: 10px;
-
   padding: 10px;
   margin: 1.5rem;
 }
 
 .input-options {
   display: flex;
-
 }
 
 .create-form input {
@@ -428,17 +426,6 @@ td {
 .radio-button {
   display: flex;
 }
-
-
-
-/* 
-.auth-form, .create-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  height: 80%;
-} */
 
 /* ==================================================================================== */
 /* Habit-details */
@@ -452,14 +439,7 @@ td {
 /* ==================================================================================== */
 /* General */
 
-.button {
-  letter-spacing: 1px;
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-weight: 400;
-  /* text-transform: uppercase; */
-  text-decoration: none;
-}
+
 
 .create-button {
   /* background-color: rgba(0, 0, 0, .05); */
@@ -511,6 +491,7 @@ td {
 
 /* =================================== */
 /* New Card Design */
+/* habitboard page */
 
 .front-face img {
   width: 75px;
@@ -568,6 +549,7 @@ td {
 
 .box .front-face span,
 .box .back-face span{
+  font-style: italic;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -583,7 +565,6 @@ td {
   left: 0;
   z-index: 1;
   height: 220px;
-  /* max-height:min-content; */
   width: 100%;
   padding: 16px;
   color: #fff;
