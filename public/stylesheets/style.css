@@ -265,7 +265,7 @@ body {
   /* background-size: cover; */
   background-size: 100%;
   /* background-repeat: no-repeat; */
-  height: 360vh;
+  height: 420vh;
 }
 
 #profile {
@@ -394,7 +394,14 @@ td {
 /* New-Habit */
 
 #create-habit {
-  padding-top: 108px;
+  padding-top: 96px;
+  /* background: url(../images/black-light-bg.jpg) center no-repeat; */
+  /* background: url(../images/pensil-dark-bg.jpg) center no-repeat; */
+  background: url(../images/pensil-dark-bg-big.jpg) center;
+  /* background-size: cover; */
+  background-size: 100%;
+  /* background-repeat: no-repeat; */
+  height: 420vh;
 }
 
 .habit-container {

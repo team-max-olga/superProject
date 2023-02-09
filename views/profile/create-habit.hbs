@@ -1,19 +1,25 @@
 
 <div id="create-habit">
-    <h1>This is a new habit page</h1>
-<a class="button" href="/profile">go back</a>
-<h2>Add your new Habit</h2>
 
-<div class="habit-container">
-    <form class="create-form" action="/profile/create-habit" method="POST">
+    <div class="left-profile">
+
+        <div id="profile">
+
+            <h1>This is a new habit page</h1>
+            <a class="button" href="/profile">go back</a>
+            <h2>Add your new Habit</h2>
+        </div>
+
+        <div class="habit-container">
+            <form class="create-form" action="/profile/create-habit" method="POST">
 
         {{!-- Title --}}
-        <div>
-            <label for="">
-                <h4>Title:</h4>
-                <input type="text" name="title" placeholder="Drink 2L of water everyday">
-            </label>
-        </div>
+                <div>
+                    <label for="">
+                    <h4>Title:</h4>
+                    <input type="text" name="title" placeholder="Drink 2L of water everyday">
+                    </label>
+                </div>
 
         {{!-- Category --}}
         <div>
@@ -65,8 +71,18 @@
 
         <button class="button create-button" type="submit" >Create New Habit</button>
     
-    </form>
-</div>
+            </form>
+        </div>
+
+
+
+
+    </div>
+
+
+    
+
+
 </div>
 
 
