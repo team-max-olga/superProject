@@ -11,7 +11,8 @@ router.get("/profile", isLoggedIn, (req, res) => {
   User.findById(req.session.currentUser._id)
     .populate("habit")
     .then((info) => {
-      res.render("profile/habitboard", info);
+      res.render("profile/habitboard", { info, theme: "colored" });
+      // res.render("profile/habitboard", info);
     });
 });
 

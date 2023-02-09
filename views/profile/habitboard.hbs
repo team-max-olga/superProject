@@ -1,44 +1,65 @@
-<div id="profile">
-    <div>
-    {{#if _id}}
-    <h2>Welcome, to your HabitBoard, {{ username }}!</h2>
+{{!-- page with colored navbar --}}
+{{!-- {{#if coloredNavbar}}
+  {{#assign bodyClass="colored-navbar"}}
+{{/if}} --}}
+
+<div id="habitboard">
+<div class="left-profile">
+    <div id="profile" class="text-start">
+
+    {{#if info._id}}
+        <h2>Welcome, to your HabitBoard, {{ info.username }}!</h2>
     {{else}}
-    <p>Still no logged in user, sorry!</p>
+        <p>Still no logged in user, sorry!</p>
     {{/if}}
-</div>
+    </div>
 
-<div>
-    <a class="create-button button" href="/profile/create-habit" id="cr-btn">create a new habit</a>
-</div>
 
-<div class="habit-card-list">
-    {{#each habit}}
+    <div id="habit-cards">
+    
+    <div>
+        <a class="new-habit-button" href="/profile/create-habit">Сreate a new habit</a>
+    </div>
+    
+    {{!-- CARDS --}}
 
-    <div class="habit-card">
-        <div class="habit-card-info">
-            <img src="/images/icons/{{category}}.svg" width="40" alt="">
-            <h3 class="habit-title">{{title}}</h3>
-        </div>
+    <div class="habit-card-list">
+    {{#each info.habit}}
+
+        <div class="habit-card">
+            <div class="habit-card-info">
+                <img src="/images/icons/{{category}}.svg" width="40" alt="">
+                <h3 class="habit-title">{{title}}</h3>
+            </div>
         <hr>
 
-        {{!-- week progression --}}
-        <div>
-        {{#if days}}
-            <p>your progression</p>
+            {{!-- week progression --}}
+            <div>
+            {{#if days}}
+                <p>your progression</p>
             {{#each days}}
                 {{#if done}}
-                <input type="checkbox" name={{name}} class="input-checkbox" checked disabled />
+                    <input type="checkbox" name={{name}} class="input-checkbox" checked disabled />
                 {{else}}
-                <input type="checkbox" name={{name}} class="input-checkbox" />
+                    <input type="checkbox" name={{name}} class="input-checkbox" />
                 {{/if}}
             {{/each}}
-        {{/if}}
-        </div>
-
+            {{/if}}
+            </div>
         <hr>
-        <a class="" href="/profile/habit/{{_id}}">About</a>
-    </div>
+
+        <a class="about" href="/profile/habit/{{_id}}">About</a>
+        </div>
     {{/each}}
+    </div>
+    {{!-- CARDS END--}}
+
+
+    </div>
+
+    
+
 </div>
 </div>
+    
 

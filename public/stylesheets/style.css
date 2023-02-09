@@ -1,73 +1,55 @@
-body{
+body {
   background-attachment: fixed;
   background-size: cover;
-  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
-  font-family: "Nunito", sans-serif;
+  /* font: "Lucida Grande", Helvetica, Arial, sans-serif; */
+  /* font-family: "Nunito", sans-serif; */
+  /* font-family: 'Montserrat', sans-serif;; */
+  font-family: MD Primer Bold, Rubik, Lato, Lucida Grande, Lucida Sans Unicode, Tahoma, Sans-Serif;
+
   height: 100vh;
   width: 100vw;
+
 }
+
 /* ==================================================================================== */
 /* Layout */
-
-#logo-image {
-  width: 80px;
-  padding: 5px 0;
-}
-
-#layout-title {
-  text-decoration: none;
-  cursor:auto;
-  user-select: none;
-}
-
-.anchor {
-  letter-spacing: 1px;
-  background-color: rgb(41, 58, 115);
-  color: white;
-  border: 1px black solid;
-  border-radius: 10px;
-  padding: 8px 18px;
-  font-weight: 600;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.anchor:hover {
-  transition: 0.2s ease-in-out;
-  background-color: green;
-  border: 1px solid #333;
-  color: white;
-  box-shadow: 0 0 10px #333;
-  cursor: pointer;
-}
-
-/* .navbar-container {
-  background: linear-gradient(to right, rgb(183, 68, 30), rgb(206, 93, 38));
-  border-bottom: 1px black solid;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
-} */
-
-/* ==================================================================================== */
 /* Fixed navbar  */
 
-.fixed-nav-bar {
+.colored {
   position: fixed;
-  top: 5;
+  top: 0;
   left: 0;
   right: 0;
-  /* z-index: 9999; */
+  z-index: 9999;
+  transition: top 0.3s;
   width: 100%;
-  
-  background-color: none;
-  /* border-bottom: 2px solid red; */
-  font-family: "Nunito", sans-serif;
-  color: #f5d9d5;
-  font-size: 1.3rem;
+  height: 72px;
+  /* background-color: none; */
+  background-color: #824d5f;
+  color: #cfafb9;
+  /* color: #b48192; */
+  /* color: #824d5f; */
+  font-size: 1.5rem;
   font-weight: 100;   
+}
+
+.transparent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  transition: top 0.3s;
+  width: 100%;
+  height: 72px;
+  /* background-color: none;
+  background-color: #824d5f; */
+  color: #cfafb9;
+  /* color: #b48192; */
+  /* color: #824d5f; */
+  font-size: 1.5rem;
+  font-weight: 100; 
+  background-color: none;
 }
 
 /* The element at the top of the page right after the fixed navigation bar
@@ -79,19 +61,21 @@ body{
   width: 100%;
   justify-content: flex-start;
   align-items: center;
-  height: 80px;
+  height: 72px;
 }
 
 .logo-image {
-  margin: 5px 0;
-  padding: 0;
-  height: 70px;
+  height: 64px;
   justify-content: flex-end;
 }
 
+
+
 .nav-link:hover,
 .nav-link:target {
-  color: #b48192;
+  /* color: #b48192; */
+  /* color: #824d5f; */
+  color: #f4ecef;
 }
 
 .menu-items {
@@ -101,7 +85,12 @@ body{
 
 .nav-item {
   display: inline-block;
-  margin: 0 30px;
+  margin: 0 24px;
+}
+
+.nav-item-logout {
+  display: inline-block;
+  margin: 0 8px;
 }
 
 #logout-button {
@@ -109,16 +98,20 @@ body{
   border: none;
   background-color: transparent;
   cursor: pointer;
+  margin: 0;
 }
-
-
 
 /* ==================================================================================== */
 /* Index Page */
 
+/* .transparent-navbar .fixed-nav-bar {
+  background-color: transparent;
+} */
+
 .bg-container {
-  background: url(../images/diary-bg-2.jpg) 30% no-repeat;
+  background: url(../images/diary-bg-2.jpg) no-repeat;
   background-size: cover;
+  /* background-size: 100%; */
   background-position: center;
   display: flex;
   justify-content: center;
@@ -150,30 +143,207 @@ body{
 }
 
 /* ==================================================================================== */
-/* HabitBoard */
-#profile {
-  margin-top: 70px;
+/* Signup Form */
+
+/* .transparent-navbar .fixed-nav-bar {
+  background-color: transparent;
+} */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.welcome {
+.auth-container {
+  background: url(../images/diary-bg-2.jpg) center no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.auth-contact-box {
+  width: 26vw;
+  margin-top: 5vw;
+  margin-left: 21vw;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding-top: 80px;
-  
-  background: linear-gradient(to left, red, blue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
-.welcome h2 {
-  font-weight: 600;
-  margin-right: 60px;
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth h2 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.auth-h6 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+}
+
+.auth-form-label {
+  width: 100%;
+  font-size: 14px;
+  text-align: left;
+  padding: 0 0 0 4px;
+}
+
+.auth-form-p {
+  font-style: none;
+  margin-bottom: 8px;
+  padding-left: 4px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.auth-field {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  border-radius: 10px;
+  background-color: rgba(230, 230, 230, 0.958);
+  margin: 8px auto 4px;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.auth-field:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.auth-btn {
+  margin: 12px 0;
+}
+
+.auth-field:focus {
+  /* border: 2px solid rgba(30, 85, 250, 0.47); */
+  border: 2px solid darkgreen;
+  background-color: rgb(255, 255, 255);
+}
+
+.error {
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: darkred;
+  color: rgb(230, 230, 230, 0.958);
+  border-radius: 10px;
+}
+
+#input-field {
+  display: none;
+}
+
+/* ==================================================================================== */
+
+
+
+
+/* ==================================================================================== */
+/* HabitBoard */
+
+/* .transparent-navbar .fixed-nav-bar {
+  background-color: #824d5f;
+} */
+
+#habitboard {
+  padding-top: 96px;
+  /* background: url(../images/black-light-bg.jpg) center no-repeat; */
+  /* background: url(../images/pensil-dark-bg.jpg) center no-repeat; */
+  background: url(../images/pensil-dark-bg-big.jpg) center;
+  /* background-size: cover; */
+  background-size: 100%;
+  /* background-repeat: no-repeat; */
+  height: 360vh;
+}
+
+#profile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 96px;
+  background-color: none;
+  /* color: #f5d9d5; */
+  /* color: #b48192; */
+  color: white;
+  /* color: #824d5f; */
+}
+
+#profile h2{
+  font-size: 1.5rem !important;
+  font-weight: 100 !important;   
+  /* font-family: 'Montserrat', cursive !important; */
+  /* text-transform: uppercase; */
+}
+
+.left-profile {
+  margin-left: 20vw;
 }
 
 .new-habit-button {
-  display: flex;
-  justify-content: center;
-  margin-right: 50px;
+  border-radius: 10px;
+  font-weight: 100;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #f4ecef;
+  color: #8b7e5c;
+  cursor: pointer;
 }
+
+.new-habit-button:hover {
+  cursor: pointer;
+  color: #824d5f;
+}
+
+#about a {
+  text-decoration: none;
+  color: darkgreen;
+}
+
+/*  */
+
+.button {
+  letter-spacing: 1px;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: 400;
+  /* text-transform: uppercase; */
+  text-decoration: none;
+}
+
+.create-button {
+  /* background-color: rgba(0, 0, 0, .05); */
+  background-color: rgba(230, 230, 230, 0.958);
+  color: darkgreen;
+  border: 2px solid darkgreen;
+}
+
+.create-button:hover {
+  /* transition: 0.2s ease-in-out; */
+  background-color: darkgreen;
+  /* border: 1px solid #333; */
+  color: white;
+  box-shadow: 0 0 3px #333;
+  cursor: pointer;
+}
+
+
+
+
+/*  */
+
+
 
 .category-image {
   width: 50px;
@@ -194,14 +364,11 @@ hr {
   margin: 0 10px;
   padding: 10px;
   width: 200px;
-
   background-color: rgba(154, 149, 149, 0.6);
-
   border-right: 2px solid black;
   border-bottom: 2px solid black;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-
   text-align: center;
 }
 
@@ -225,6 +392,10 @@ td {
 
 /* ==================================================================================== */
 /* New-Habit */
+
+#create-habit {
+  padding-top: 108px;
+}
 
 .habit-container {
   display: flex;
@@ -267,6 +438,15 @@ td {
 } */
 
 /* ==================================================================================== */
+/* Habit-details */
+
+
+#habit-details {
+  padding-top: 108px;
+}
+
+
+/* ==================================================================================== */
 /* General */
 
 .button {
@@ -279,7 +459,8 @@ td {
 }
 
 .create-button {
-  background-color: rgba(0, 0, 0, .05);
+  /* background-color: rgba(0, 0, 0, .05); */
+  background-color: rgba(230, 230, 230, 0.958);
   color: darkgreen;
   border: 2px solid darkgreen;
 }
@@ -350,151 +531,6 @@ day21.checked = document.queryselector().setAtribute(style.display: block)
 */
 
 
-/* ==================================================================================== */
-/* Signup Form */
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
-.auth-container {
-  background: url(../images/diary-bg-2.jpg) center no-repeat;
-  background-size: cover;
-  display: flex;
-  /* flex-grow: 1; */
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.auth-contact-box {
-/* in px */
-  /* width: 350px; */
-  /* margin-top: 60px; */
-  /* margin-left: 300px; */
-/* in % */
-  /* width: 26%; */
-  /* margin-top: 5%; */
-  /* margin-left: 21%; */
-/* in vw */
-  width: 26vw;
-  margin-top: 5vw;
-  margin-left: 21vw;
-  /* position: relative; */
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.auth h2 {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-/* !!! TO DO: font-family doesn't work*/
-.auth h6 {
-  /* font-family: 'Dancing Script', cursive; */
-  font: 12px "Dancing Script", cursive;
-}
-
-.auth-form-label {
-  width: 100%;
-  font-size: 14px;
-  text-align: left;
-  padding: 0 0 0 4px;
-}
-
-.auth-form-p {
-  font-style: none;
-  margin-bottom: 8px;
-  padding-left: 4px;
-  font-size: 12px;
-  text-align: center;
-}
-
-.auth-field {
-  width: 100%;
-  border: 2px solid rgba(0, 0, 0, 0);
-  outline: none;
-  border-radius: 10px;
-  background-color: rgba(230, 230, 230, 0.958);
-  margin: 8px auto 4px;
-  padding: 12px;
-  font-size: 14px;
-}
-
-.auth-field:hover {
-  background-color: rgb(255, 255, 255);
-}
-
-.auth-btn {
-  margin: 12px 0;
-}
-
-.auth-field:focus {
-  /* border: 2px solid rgba(30, 85, 250, 0.47); */
-  border: 2px solid darkgreen;
-  background-color: rgb(255, 255, 255);
-}
-
-.error {
-  box-sizing: border-box;
-  text-align: center;
-  width: 100%;
-  margin: 10px auto;
-  padding: 20px;
-  background-color: darkred;
-  color: rgb(230, 230, 230, 0.958);
-  border-radius: 10px;
-}
-
-#input-field {
-  display: none;
-}
-
-/* ==================================================================================== */
-/* Auth Forms  */
-
-/* .auth-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  width: 400px;
-  position: relative;
-  border: solid 1px black;
-  border-radius: 10px;
-  margin: 0 auto;
-  margin-block: 10vh;
-  padding: 32px;
-  background: rgba(245, 245, 245, .4);
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  height: 80%;
-}
-
-.auth-form label {
-  width: 100%;
-  font-size: 1rem;
-}
-
-.auth-form input {
-  margin: 8px auto;
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-} */
 
