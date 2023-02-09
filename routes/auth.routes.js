@@ -5,9 +5,14 @@ const saltRounds = 10;
 const mongoose = require("mongoose");
 const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
+// GET route ==> to display the index page to users
+// router.get("/", isLoggedIn, isLoggedOut, (req, res, next) => {
+//   res.render("/", { theme: "transparent" });
+// });
+
 // GET route ==> to display the signup form to users
 router.get("/signup", isLoggedOut, (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", { theme: "transparent" });
 });
 
 // POST route ==> to process form data
@@ -92,7 +97,9 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/login", isLoggedOut, (req, res, next) => res.render("auth/login"));
+router.get("/login", isLoggedOut, (req, res, next) =>
+  res.render("auth/login", { theme: "transparent" })
+);
 
 // router.get("/profile", (req, res, next) => {
 //   res.render("profile/habitboard");
