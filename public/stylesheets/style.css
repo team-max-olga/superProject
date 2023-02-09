@@ -246,11 +246,6 @@ body {
 }
 
 /* ==================================================================================== */
-
-
-
-
-/* ==================================================================================== */
 /* HabitBoard */
 
 /* .transparent-navbar .fixed-nav-bar {
@@ -270,8 +265,11 @@ body {
 
 #profile {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  /* align-items: center; */
+  margin-left: 10px;
+  
   height: 96px;
   background-color: none;
   /* color: #f5d9d5; */
@@ -282,13 +280,14 @@ body {
 
 #profile h2{
   font-size: 1.5rem !important;
-  font-weight: 100 !important;   
+  font-weight: 100 !important;  
+  margin-bottom: 20px; 
   /* font-family: 'Montserrat', cursive !important; */
   /* text-transform: uppercase; */
 }
 
 .left-profile {
-  margin-left: 20vw;
+  margin-left: 15vw;
 }
 
 .new-habit-button {
@@ -311,26 +310,23 @@ body {
   color: darkgreen;
 }
 
-/*  */
-
 .button {
   letter-spacing: 1px;
-  padding: 12px 25px;
+  padding: 6px 12px;
   border-radius: 10px;
   font-weight: 400;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   text-decoration: none;
 }
 
 .create-button {
-  /* background-color: rgba(0, 0, 0, .05); */
   background-color: rgba(230, 230, 230, 0.958);
   color: darkgreen;
   border: 2px solid darkgreen;
 }
 
 .create-button:hover {
-  /* transition: 0.2s ease-in-out; */
+  transition: 0.1s ease-in-out;
   background-color: darkgreen;
   /* border: 1px solid #333; */
   color: white;
@@ -458,7 +454,7 @@ td {
 
 .button {
   letter-spacing: 1px;
-  padding: 12px 25px;
+  padding: 6px 12px;
   border-radius: 10px;
   font-weight: 400;
   /* text-transform: uppercase; */
@@ -482,7 +478,7 @@ td {
 }
 
 .details-button {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255,);
   color: darkblue;
   border: 2px solid darkblue;
   justify-content: center;
@@ -513,31 +509,102 @@ td {
   cursor: pointer;
 }
 
-.go-back {
-  background-image: url(../images/icons/left-arrow.png);
-  background-size: 25px;
-  background-repeat: no-repeat;
-  width: 5px;
+/* =================================== */
+/* New Card Design */
 
+.front-face img {
+  width: 75px;
+  margin-top: 10px;
+}
+
+.progression {
+    max-width: 130px;
+    display: block;
+}
+
+.front-face p {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 15px;
+}
+
+.buttons {
+    position: fixed;
+    bottom: 0;
+
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper .box{
+  width: 250px;
+  margin: 25px 10px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.front-face, .back-face {
+  border-radius: 15px;
+}
+
+.wrapper .box .front-face{
+  background: rgb(234, 223, 226);
+  height: 220px;
+  width: 100%;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  /* justify-content: center; */
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
 }
 
-
-
-/* ======================= */
-/* switch buttons for Create-Habit */
-
-
-.week {
-  margin: 25px 50px;
+.box .front-face span,
+.box .back-face span{
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+/* .box .front-face, */
+.box .front-face span{
+  color: rgb(187,149,162);
+  margin: 0 10px;
+}
+.box .back-face{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 220px;
+  /* max-height:min-content; */
+  width: 100%;
+  padding: 16px;
+  color: #fff;
+  opacity: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  transform: translateY(110px) rotateX(-90deg);
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
 }
 
-/* const day21 = document.querysafwqn
-
-day21.checked = document.queryselector().setAtribute(style.display: block) 
-*/
-
-
-
-
-
+.box .back-face p{
+  margin-top: 10px;
+  text-align: justify;
+}
+.box:hover .back-face{
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+.box:hover .front-face{
+  opacity: 0;
+  transform: translateY(-110px) rotateX(90deg);
+}
