@@ -1,6 +1,10 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
+const daySchema = new Schema({
+  name: String,
+  done: Boolean,
+});
+
 const habitSchema = new Schema(
   {
     title: {
@@ -12,27 +16,34 @@ const habitSchema = new Schema(
     },
     category: {
       type: String,
-      enum: ["Health", "Sport", "Daily Routine", "Work"],
+      enum: ["Health", "Sport", "Daily Routine", "Work", "Art"],
     },
     duration: {
       type: String,
-      enum: ["7 days", "14 days", "21 days"],
+      enum: ["7", "14", "21"],
     },
     description: {
       type: String,
     },
-    // creator: String,
-    // created: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
+    author: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    days: [
+      {
+        type: daySchema,
+      },
+    ],
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 );
 
 const Habit = model("Habit", habitSchema);
+const Days = model("Days", daySchema);
 
 module.exports = Habit;
+
