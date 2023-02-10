@@ -300,14 +300,6 @@ body {
   cursor: pointer;
 }
 
-/* .button {
-  padding: 6px 12px;
-  letter-spacing: 1px;
-  border-radius: 10px;
-  font-weight: 100;
-  text-decoration: none;
-} */
-
 .green-button:hover {
   cursor: pointer;
   color: darkolivegreen;
