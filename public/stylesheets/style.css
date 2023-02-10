@@ -283,7 +283,6 @@ body {
   justify-content: flex-start;
   /* align-items: center; */
   margin-left: 10px;
-  
   height: 96px;
   color: #f4ecef;
 }
@@ -294,9 +293,12 @@ body {
 }
 
 .left-profile {
-  margin-left: 15vw;
+  margin-left: 20vw;
 }
 
+#habit-cards {
+  margin-top: 20px;
+}
 
 
 .button {
