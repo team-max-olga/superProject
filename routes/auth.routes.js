@@ -5,11 +5,6 @@ const saltRounds = 10;
 const mongoose = require("mongoose");
 const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
-// GET route ==> to display the index page to users
-// router.get("/", isLoggedIn, isLoggedOut, (req, res, next) => {
-//   res.render("/", { theme: "transparent" });
-// });
-
 // GET route ==> to display the signup form to users
 router.get("/signup", isLoggedOut, (req, res, next) => {
   res.render("auth/signup", { theme: "transparent" });
@@ -18,11 +13,11 @@ router.get("/signup", isLoggedOut, (req, res, next) => {
 // POST route ==> to process form data
 router.post("/signup", isLoggedOut, (req, res, next) => {
   //req.body what a user has submitted
-  // console.log("Data from user: ", req.body);
   const { username, email, password } = req.body;
   // Checking if all required fields are provided
   if (!username || !email || !password) {
     return res.render("auth/signup", {
+      theme: "transparent",
       errorMessage:
         "All fields are mandatory. Please provide your username, email and password.",
     });
