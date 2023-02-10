@@ -1,73 +1,42 @@
-body{
+body {
   background-attachment: fixed;
   background-size: cover;
-  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
-  font-family: "Nunito", sans-serif;
+  font-family: MD Primer Bold, Rubik, Lato, Lucida Grande, Lucida Sans Unicode, Tahoma, Sans-Serif;
   height: 100vh;
   width: 100vw;
 }
+
 /* ==================================================================================== */
 /* Layout */
-
-#logo-image {
-  width: 80px;
-  padding: 5px 0;
-}
-
-#layout-title {
-  text-decoration: none;
-  cursor:auto;
-  user-select: none;
-}
-
-.anchor {
-  letter-spacing: 1px;
-  background-color: rgb(41, 58, 115);
-  color: white;
-  border: 1px black solid;
-  border-radius: 10px;
-  padding: 8px 18px;
-  font-weight: 600;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.anchor:hover {
-  transition: 0.2s ease-in-out;
-  background-color: green;
-  border: 1px solid #333;
-  color: white;
-  box-shadow: 0 0 10px #333;
-  cursor: pointer;
-}
-
-/* .navbar-container {
-  background: linear-gradient(to right, rgb(183, 68, 30), rgb(206, 93, 38));
-  border-bottom: 1px black solid;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
-} */
-
-/* ==================================================================================== */
 /* Fixed navbar  */
 
-.fixed-nav-bar {
+.colored {
   position: fixed;
-  top: 5;
+  top: 0;
   left: 0;
   right: 0;
-  /* z-index: 9999; */
+  z-index: 9999;
+  transition: top 0.3s;
   width: 100%;
-  
-  background-color: none;
-  /* border-bottom: 2px solid red; */
-  font-family: "Nunito", sans-serif;
-  color: #f5d9d5;
-  font-size: 1.3rem;
+  height: 64px;
+  background-color: #e3dbd1;
+  color: #171717;
+  font-size: 1.5rem;
   font-weight: 100;   
+}
+
+.transparent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: top 0.3s;
+  width: 100%;
+  height: 64px;
+  color: #e3dbd1;
+  font-size: 1.5rem;
+  font-weight: 100; 
+  background-color: none;
 }
 
 /* The element at the top of the page right after the fixed navigation bar
@@ -79,19 +48,17 @@ body{
   width: 100%;
   justify-content: flex-start;
   align-items: center;
-  height: 80px;
+  height: 64px;
 }
 
 .logo-image {
-  margin: 5px 0;
-  padding: 0;
-  height: 70px;
+  height: 64px;
   justify-content: flex-end;
 }
 
 .nav-link:hover,
 .nav-link:target {
-  color: #b48192;
+  color: #7f7354;
 }
 
 .menu-items {
@@ -101,7 +68,12 @@ body{
 
 .nav-item {
   display: inline-block;
-  margin: 0 30px;
+  margin: 0 24px;
+}
+
+.nav-item-logout {
+  display: inline-block;
+  margin: 0 8px;
 }
 
 #logout-button {
@@ -109,15 +81,44 @@ body{
   border: none;
   background-color: transparent;
   cursor: pointer;
+  margin: 0;
 }
 
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: bottom 0.3s;
+  width: 100%;
+  display: flex;
+  background-color: #e3dbd1;
+  color: #171717;
+  justify-content: center;
+  width: 100%;
+  height: 32px;
+  align-items: center;
+  
+}
 
+#footer a {
+  color: #171717;
+  text-decoration: none;
+  text-align: center;
+}
+
+#footer p {
+  margin: 2px auto;
+  padding: 2px auto;
+  font-size: 14px;
+  font-weight: 100;
+}
 
 /* ==================================================================================== */
 /* Index Page */
 
 .bg-container {
-  background: url(../images/diary-bg-2.jpg) 30% no-repeat;
+  background: url(../images/diary-bg-2.jpg) no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -150,58 +151,251 @@ body{
 }
 
 /* ==================================================================================== */
-/* HabitBoard */
-#profile {
-  margin-top: 70px;
+/* Signup/Login Form */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.welcome {
-  text-align: center;
-  padding-top: 80px;
-  
-  background: linear-gradient(to left, red, blue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.welcome h2 {
-  font-weight: 600;
-  margin-right: 60px;
-}
-
-.new-habit-button {
+.auth-container {
+  background: url(../images/diary-bg-2.jpg) center no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
-  margin-right: 50px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.category-image {
+.auth-contact-box {
+  width: 26vw;
+  margin-top: 5vw;
+  margin-left: 21vw;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth h2 {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.auth-h6 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+}
+
+.auth-form-label {
+  width: 100%;
+  font-size: 14px;
+  text-align: left;
+  padding: 0 0 0 4px;
+}
+
+.auth-form-p {
+  font-style: none;
+  margin-bottom: 6px;
+  padding-left: 4px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.auth-field {
+  width: 100%;
+  border: 2px solid #00000000;
+  outline: none;
+  border-radius: 10px;
+  background-color: #e6e6e6f4;
+  margin: 4px auto 4px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.auth-field:hover {
+  background-color: #ffffff;
+}
+
+.auth-btn {
+  margin: 12px 0;
+  padding: 9px;
+  font-weight: 100;
+  text-decoration: none;
+  cursor: pointer;
+  color: #8b7e5c;
+  background-color: #e6e6e6f4;
+  border-radius: 10px;
+  border: 1px solid #8b7e5c;
+}
+
+
+.auth-btn:hover {
+  cursor: pointer;
+  color: darkolivegreen;
+  background-color: #ffffff;
+  border: 3px solid darkolivegreen;
+  box-shadow: 0 0 10px darkolivegreen;
+}
+
+.auth-field:focus {
+  /* border: 2px solid rgba(30, 85, 250, 0.47); */
+  border: 2px solid darkolivegreen;
+  background-color: #ffffff;
+}
+
+.error {
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  margin: 10px auto;
+  padding: 12px;
+  background-color: darkred;
+  color: #e6e6e6f4;
+  border-radius: 10px;
+}
+
+#input-field {
+  display: none;
+}
+
+/* ==================================================================================== */
+/* HabitBoard */
+
+#habitboard {
+  padding-top: 96px;
+  background: url(../images/pensil-dark-bg-big.jpg) center;
+  background-size: 100%;
+  /* height: 420vh; */
+  height: 2700px;
+}
+
+#profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  margin-left: 10px;
+  height: 96px;
+  color: #f4ecef;
+}
+
+#profile h2{
+  font-size: 1.5rem !important;
+  font-weight: 100 !important;   
+}
+
+.left-profile {
+  margin-left: 20vw;
+}
+
+#habit-cards {
+  margin-top: 20px;
+}
+
+
+.button {
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 100;
+  text-decoration: none;
+  background-color: #f4ecef;
+  color: #8b7e5c;
+  cursor: pointer;
+  border: 1px solid #8b7e5c;
+}
+
+/* .button {
+  padding: 6px 12px;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  font-weight: 100;
+  text-decoration: none;
+} */
+
+.green-button:hover {
+  cursor: pointer;
+  color: darkolivegreen;
+  border: 3px solid darkolivegreen;
+  box-shadow: 0 0 10px darkolivegreen;
+}
+
+.red-button:hover {
+  cursor: pointer;
+  color: darkred;
+  border: 3px solid darkred;
+  box-shadow: 0 0 10px darkred;
+}
+
+.orange-button:hover {
+  cursor: pointer;
+  color: rgb(185, 124, 11);
+  border: 3px solid rgb(185, 124, 11);
+  box-shadow: 0 0 10px rgb(185, 124, 11);
+}
+
+/* #about a {
+  text-decoration: none;
+  color: darkolivegreen;
+} */
+
+/* -------- */
+
+
+/* .category-image {
+  color: darkgreen;
+} */
+
+/* .button {
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+} */
+
+/* .create-button {
+  background-color: rgba(230, 230, 230, 0.958);
+  color: darkgreen;
+  border: 2px solid darkgreen;
+} */
+
+/* .create-button:hover {
+  transition: 0.1s ease-in-out;
+  background-color: darkgreen;
+  color: white;
+  box-shadow: 0 0 3px #333;
+  cursor: pointer;
+} */
+
+/* .category-image {
   width: 50px;
-}
+} */
 
-hr {
-  border: 5px solid black;
-}
-
-.habit-card-list {
+/* .habit-card-list {
   display: flex;
   flex-wrap: wrap;
   gap: .75em;
   margin: 50px 50px;
-}
+} */
 
-.habit-card {
+/* .habit-card {
   margin: 0 10px;
   padding: 10px;
   width: 200px;
-
   background-color: rgba(154, 149, 149, 0.6);
-
   border-right: 2px solid black;
   border-bottom: 2px solid black;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-
   text-align: center;
 }
 
@@ -210,76 +404,246 @@ hr {
 
   box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
   transition: 0.3s;
-}
-
-span {
-  font-style: italic;
-}
-
-td {
-  border: 2px black solid;
-  margin: 0 10px;
-}
-
-
+} */
 
 /* ==================================================================================== */
 /* New-Habit */
+
+#create-habit {
+  padding-top: 96px;
+  background: url(../images/pensil-dark-bg-big.jpg) center;
+  background-size: 100%;
+  /* height: 420vh; */
+  height: 2700px;
+}
+
+.go-back-btn {
+  font-weight: 100;
+  text-decoration: none;
+  color: #ab7184;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.go-back-btn:hover {
+  cursor: pointer;
+  color: #f4ecef;
+}
 
 .habit-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-width: 400px;
-  max-width: 30%;
-
-  background: rgba(245, 245, 245, .4);
-  border: 2px black solid;
+  min-width: 600px;
+  max-width: 50%;
+  background: #252525;
+  border: 1px #f4ecef solid;
   border-radius: 10px;
-
   padding: 10px;
-  margin: 1.5rem;
+  margin: 50px 0;
+  color: #f4ecef;
+  gap: 20;
 }
+
+.habit-container img{
+  margin: auto 20px;
+  margin: auto 28px;
+  position: center;
+}
+
+/* {{!-- Title --}} */
+
+.title-option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 12px 8px;
+  padding: 4px 0;
+}
+
+.title-option h5 {
+  margin-right: 100px;
+  padding-top: 4px;
+}
+
+.title-option input{
+  border: 1px #f4ecef solid;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 16px;
+  background-color: #e6e6e6f4;
+  width: 100%;
+}
+
+.title-option input:hover{
+  background-color: #ffffff;
+}
+
+.title-option input:focus {
+  outline: 2px solid darkolivegreen;
+  background-color: #ffffff;
+}
+
+/* {{!-- Category --}} */
+
+.category-option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 12px 8px;
+  padding: 4px 0;
+}
+
+.category-option h5 {
+  margin-right: 60px;
+  padding-top: 4px;
+}
+
+/* {{!-- Duration --}} */
+
+.duration-option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 12px 8px;
+  padding: 4px 0;
+}
+
+.duration-option h5 {
+  margin-right: 60px;
+  padding-top: 4px;
+}
+
+/* {{!-- Description --}} */
+
+.description-option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 12px 8px;
+  padding: 4px 0;
+}
+
+.description-option h5 {
+  margin-right: 35px;
+  padding-top: 4px;
+}
+
+.description-option input{
+  border: 1px #f4ecef solid;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 16px;
+  background-color: #e6e6e6f4;
+  width: 100%;
+}
+
+.description-option input:hover{
+  background-color: #ffffff;
+}
+
+.description-option input:focus {
+  outline: 2px solid darkolivegreen;
+  background-color: #ffffff;
+}
+
+/* radio-buttons */
 
 .input-options {
   display: flex;
-
+  width: 100%;
+  justify-content: space-around;
 }
 
-.create-form input {
-  height: 2rem;
-  font-size: 1.05rem;
-}
-
-.radio-button {
+.create-edit-button {
   display: flex;
+  justify-content: center;
+  margin: 24px 0 20px;
 }
 
 
+/* .green-button {
+  border-radius: 10px;
+  font-weight: 100;
+  text-decoration: none;
+  padding: 6px 12px;
+  background-color: #f4ecef;
+  color: #8b7e5c;
+  cursor: pointer;
+  border: 1px solid #8b7e5c;
+} */
 
-/* 
-.auth-form, .create-form {
+/* .green-button:hover {
+  cursor: pointer;
+  color: darkolivegreen;
+  border: 3px solid darkolivegreen;
+  box-shadow: 0 0 10px darkolivegreen;
+} */
+
+/* ==================================================================================== */
+/* Habit-details */
+
+#habit-details {
+  padding-top: 96px;
+  background: url(../images/pensil-dark-bg-big.jpg) center;
+  background-size: 100%;
+  /* height: 420vh; */
+  height: 2700px;
+}
+
+/* ==================================================================================== */
+/* Habit-details */
+
+#edit-details {
+  padding-top: 96px;
+  background: url(../images/pensil-dark-bg-big.jpg) center;
+  background-size: 100%;
+  /* height: 420vh; */
+  height: 2700px;
+}
+
+.title-option img{
+  margin: 4px 16px 8px;
+}
+
+.check-progress{
+  margin-left: 8px;
+  width: 125px;
+}
+
+.buttons-details{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  height: 80%;
+  justify-content: space-evenly;
+  margin: 24px 0 20px;
+}
+
+.btn-center {
+  margin-left: 27vh;
+
+}
+
+/* .habit-container button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 24px 0 20px;
 } */
 
 /* ==================================================================================== */
 /* General */
 
 .button {
-  letter-spacing: 1px;
-  padding: 12px 25px;
+  /* letter-spacing: 1px; */
+  padding: 6px 12px;
   border-radius: 10px;
-  font-weight: 400;
+  /* font-weight: 400; */
   /* text-transform: uppercase; */
   text-decoration: none;
 }
 
 .create-button {
-  background-color: rgba(0, 0, 0, .05);
+  /* background-color: rgba(0, 0, 0, .05); */
+  background-color: rgba(230, 230, 230, 0.958);
   color: darkgreen;
   border: 2px solid darkgreen;
 }
@@ -294,7 +658,7 @@ td {
 }
 
 .details-button {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255,);
   color: darkblue;
   border: 2px solid darkblue;
   justify-content: center;
@@ -325,176 +689,103 @@ td {
   cursor: pointer;
 }
 
-.go-back {
-  background-image: url(../images/icons/left-arrow.png);
-  background-size: 25px;
-  background-repeat: no-repeat;
-  width: 5px;
+/* =================================== */
+/* New Card Design */
+/* habitboard page */
 
-  align-items: center;
+.front-face img {
+  width: 75px;
+  margin-top: 10px;
 }
 
-
-
-/* ======================= */
-/* switch buttons for Create-Habit */
-
-
-.week {
-  margin: 25px 50px;
+.progression {
+    max-width: 130px;
+    display: block;
 }
 
-/* const day21 = document.querysafwqn
-
-day21.checked = document.queryselector().setAtribute(style.display: block) 
-*/
-
-
-/* ==================================================================================== */
-/* Signup Form */
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.front-face p {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 15px;
 }
 
-.auth-container {
-  background: url(../images/diary-bg-2.jpg) center no-repeat;
-  background-size: cover;
+.buttons {
+    position: fixed;
+    bottom: 0;
+
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper{
   display: flex;
-  /* flex-grow: 1; */
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  flex-wrap: wrap;
 }
 
-.auth-contact-box {
-/* in px */
-  /* width: 350px; */
-  /* margin-top: 60px; */
-  /* margin-left: 300px; */
-/* in % */
-  /* width: 26%; */
-  /* margin-top: 5%; */
-  /* margin-left: 21%; */
-/* in vw */
-  width: 26vw;
-  margin-top: 5vw;
-  margin-left: 21vw;
-  /* position: relative; */
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.auth h2 {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-/* !!! TO DO: font-family doesn't work*/
-.auth h6 {
-  /* font-family: 'Dancing Script', cursive; */
-  font: 12px "Dancing Script", cursive;
-}
-
-.auth-form-label {
-  width: 100%;
-  font-size: 14px;
-  text-align: left;
-  padding: 0 0 0 4px;
-}
-
-.auth-form-p {
-  font-style: none;
-  margin-bottom: 8px;
-  padding-left: 4px;
-  font-size: 12px;
-  text-align: center;
-}
-
-.auth-field {
-  width: 100%;
-  border: 2px solid rgba(0, 0, 0, 0);
-  outline: none;
-  border-radius: 10px;
-  background-color: rgba(230, 230, 230, 0.958);
-  margin: 8px auto 4px;
-  padding: 12px;
-  font-size: 14px;
-}
-
-.auth-field:hover {
-  background-color: rgb(255, 255, 255);
-}
-
-.auth-btn {
-  margin: 12px 0;
-}
-
-.auth-field:focus {
-  /* border: 2px solid rgba(30, 85, 250, 0.47); */
-  border: 2px solid darkgreen;
-  background-color: rgb(255, 255, 255);
-}
-
-.error {
-  box-sizing: border-box;
-  text-align: center;
-  width: 100%;
-  margin: 10px auto;
-  padding: 20px;
-  background-color: darkred;
-  color: rgb(230, 230, 230, 0.958);
-  border-radius: 10px;
-}
-
-#input-field {
-  display: none;
-}
-
-/* ==================================================================================== */
-/* Auth Forms  */
-
-/* .auth-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  width: 400px;
+.wrapper .box{
+  width: 250px;
+  margin: 25px 10px;
   position: relative;
-  border: solid 1px black;
-  border-radius: 10px;
-  margin: 0 auto;
-  margin-block: 10vh;
-  padding: 32px;
-  background: rgba(245, 245, 245, .4);
+  perspective: 1000px;
 }
 
-.auth-form {
+.front-face, .back-face {
+  border-radius: 15px;
+}
+
+.wrapper .box .front-face{
+  background: rgb(234, 223, 226);
+  height: 220px;
+  width: 100%;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  height: 80%;
+  /* justify-content: center; */
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
 }
 
-.auth-form label {
+.box .front-face span,
+.box .back-face span{
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+/* .box .front-face, */
+.box .front-face span{
+  color: rgb(187,149,162);
+  margin: 0 10px;
+}
+.box .back-face{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 220px;
   width: 100%;
-  font-size: 1rem;
+  padding: 16px;
+  color: #fff;
+  opacity: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  transform: translateY(110px) rotateX(-90deg);
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
 }
 
-.auth-form input {
-  margin: 8px auto;
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-} */
-
+.box .back-face p{
+  margin-top: 10px;
+  text-align: justify;
+}
+.box:hover .back-face{
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+.box:hover .front-face{
+  opacity: 0;
+  transform: translateY(-110px) rotateX(90deg);
+}

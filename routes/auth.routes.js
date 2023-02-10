@@ -7,17 +7,17 @@ const { isLoggedIn, isLoggedOut } = require("../middleware/route-guard.js");
 
 // GET route ==> to display the signup form to users
 router.get("/signup", isLoggedOut, (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", { theme: "transparent" });
 });
 
 // POST route ==> to process form data
 router.post("/signup", isLoggedOut, (req, res, next) => {
   //req.body what a user has submitted
-  // console.log("Data from user: ", req.body);
   const { username, email, password } = req.body;
   // Checking if all required fields are provided
   if (!username || !email || !password) {
     return res.render("auth/signup", {
+      theme: "transparent",
       errorMessage:
         "All fields are mandatory. Please provide your username, email and password.",
     });
@@ -92,7 +92,9 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/login", isLoggedOut, (req, res, next) => res.render("auth/login"));
+router.get("/login", isLoggedOut, (req, res, next) =>
+  res.render("auth/login", { theme: "transparent" })
+);
 
 // router.get("/profile", (req, res, next) => {
 //   res.render("profile/habitboard");
